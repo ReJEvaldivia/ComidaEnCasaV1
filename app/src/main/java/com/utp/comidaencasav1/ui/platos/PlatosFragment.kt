@@ -1,13 +1,12 @@
 package com.utp.comidaencasav1.ui.platos
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.utp.comidaencasav1.R
@@ -15,7 +14,6 @@ import com.utp.comidaencasav1.databinding.FragmentPlatosBinding
 import com.utp.comidaencasav1.model.models.Plato
 import com.utp.comidaencasav1.presenter.PlatoPresenter
 import com.utp.comidaencasav1.presenter.PlatoPresenterImpl
-import com.utp.comidaencasav1.ui.platos.PlatosViewModel
 import com.utp.comidaencasav1.view.PlatoView
 
 class PlatosFragment : Fragment(), PlatoView {
@@ -40,18 +38,19 @@ class PlatosFragment : Fragment(), PlatoView {
         _binding = FragmentPlatosBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textPlatos
-        platosViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
-
         platoPresenter = PlatoPresenterImpl(this)
 
         //VIEW
-        rvPlatos = binding.rvPlatos//UI
+        rvPlatos = binding.rcvPlatosPlato//UI
         rvPlatos?.layoutManager = LinearLayoutManager(this.context)
 
         getPlatos()
+
+        val nav = Navigation.createNavigateOnClickListener(R.id.nav_platos_to_platosAddUpdate)
+
+        _binding!!.btnNuevoPlato.setOnClickListener({
+            nav.onClick(it)
+        })
 
         return root
     }

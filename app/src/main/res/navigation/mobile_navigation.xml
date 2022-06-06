@@ -27,5 +27,22 @@
         android:id="@+id/nav_platos"
         android:name="com.utp.comidaencasav1.ui.platos.PlatosFragment"
         android:label="@string/menu_platos"
-        tools:layout="@layout/fragment_platos" />
+        tools:layout="@layout/fragment_platos">
+        <action
+            android:id="@+id/nav_platos_to_platosAddUpdate"
+            app:destination="@+id/platosAddUpdateFragment"
+            app:popUpTo="@id/nav_platos" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/platosAddUpdateFragment"
+        android:name="com.utp.comidaencasav1.ui.platos.PlatosAddUpdateFragment"
+        android:label="fragment_platos_add_update"
+        tools:layout="@layout/fragment_platos_add_update">
+        <argument
+            android:name="arg_item"
+            app:argType="com.utp.comidaencasav1.model.models.Plato"
+            android:defaultValue="@null" />
+    </fragment>
+
 </navigation>

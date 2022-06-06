@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 class PlatosViewModel : ViewModel() {
     // TODO: Implement the ViewModel
     private val _text = MutableLiveData<String>().apply {
-        value = "Cheese tres"
+        value = ""
     }
     val text: LiveData<String> = _text
 }
