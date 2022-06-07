@@ -46,7 +46,7 @@ class PlatosFragment : Fragment(), PlatoView {
 
         getPlatos()
 
-        val nav = Navigation.createNavigateOnClickListener(R.id.nav_platos_to_platosAddUpdate)
+        val nav = Navigation.createNavigateOnClickListener(R.id.nav_platosAddUpdateFragment)
 
         _binding!!.btnNuevoPlato.setOnClickListener({
             nav.onClick(it)

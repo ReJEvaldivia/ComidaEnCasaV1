@@ -29,13 +29,10 @@ class PlatosAdapter(var platos: ArrayList<Plato>?, var resource: Int) :
         var plato = platos?.get(position)
         holder.setDataCard(plato)
 
-        var plato1: Plato = Plato()
-        plato1.idPlato = 1
-        plato1.nombre = "Arroz con pollo 😊"
-        val bundle = bundleOf("arg_item" to plato1)
+        val bundle = bundleOf("arg_item" to plato)
 
         holder.btnEditar.setOnClickListener(View.OnClickListener {
-            it.findNavController().navigate(R.id.nav_platos_to_platosAddUpdate, bundle)
+            it.findNavController().navigate(R.id.nav_platosAddUpdateFragment, bundle)
         })
     }
 
@@ -48,7 +45,7 @@ class PlatosAdapter(var platos: ArrayList<Plato>?, var resource: Int) :
 
         fun setDataCard(plato: Plato?) {
             this.plato = plato
-            txtNombre.setText(plato?.idPlato.toString() + ' ' + plato?.nombre)
+            txtNombre.text = plato?.idPlato.toString() + " " + plato?.nombre
         }
 
     }

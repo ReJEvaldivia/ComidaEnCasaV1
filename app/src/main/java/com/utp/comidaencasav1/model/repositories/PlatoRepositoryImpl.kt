@@ -2,6 +2,8 @@ package com.utp.comidaencasav1.model.repositories
 
 import android.util.Log
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.toObject
+import com.google.firebase.firestore.ktx.toObjects
 import com.utp.comidaencasav1.model.models.Plato
 import com.utp.comidaencasav1.presenter.PlatoPresenter
 
@@ -23,36 +25,48 @@ class PlatoRepositoryImpl(var platoPresenter: PlatoPresenter) : PlatoRepository 
         //platoPresenter.showPlatos(platos)
 
         //Traer los platos de Firebase
-        getShowPlatos(platos)
+        getShowPlatos()
 
     }
 
-    fun getShowPlatos(platos: ArrayList<Plato>?) {
-        var name: String = ""
-        var idPlatoCount = 3
-
-        Log.d("Datos TEST 1", "HJOLAS")
+    fun getShowPlatos() {
+        //Log.d("Datos TEST 1", "HOLAS")
         val db = FirebaseFirestore.getInstance()
-        db.collection("Plato")
+        val docRef = db.collection("Plato")
+
+        //Recupera con filtros
+        docRef.whereEqualTo("idCuenta", 1).whereEqualTo("idUsuarioCreador", 3)
             .get()
-            .addOnSuccessListener { result ->
-                for (document in result) {
-                    name = document.getString("Nombre")!!
-                    Log.d("Datos TEST 2", "$name")
-
-
-                    var plato3: Plato = Plato()
-                    plato3.idPlato = idPlatoCount
-                    plato3.nombre = "Firebase: $name"
-                    platos?.add(plato3)
-                    idPlatoCount += 1
-
+            .addOnSuccessListener { documents ->
+                var platos: ArrayList<Plato>? = ArrayList()
+                for (document in documents) {
+                    val plato = document.toObject<Plato>()!!
+                    plato.idDocumento = document.id
+                    platos?.add(plato)
                 }
                 platoPresenter.showPlatos(platos)
             }
-            .addOnFailureListener { exception -> {} }
 
-        Log.d("Datos TEST 3", "$name")
+        /*
+        //Recupera 1 documento
+        docRef.document("FjvPTqZZw54xYCzBvdgk").get().addOnSuccessListener { document ->
+            val plato = document.toObject<Plato>()!!
+            plato.idDocumento = document.id
+            var platos: ArrayList<Plato>? = ArrayList()
+            platos?.add(plato)
+            platoPresenter.showPlatos(platos)
+        }
+
+        //Recupera todos los documentos
+        docRef.get().addOnSuccessListener { documents ->
+            val platos = ArrayList(documents.toObjects<Plato>())
+            platoPresenter.showPlatos(platos)
+        }
+            .addOnFailureListener { exception ->
+                Log.d("Firebase Message", "Error writing document", exception)
+            }
+            */
+
 
     }
 }

@@ -28,14 +28,10 @@
         android:name="com.utp.comidaencasav1.ui.platos.PlatosFragment"
         android:label="@string/menu_platos"
         tools:layout="@layout/fragment_platos">
-        <action
-            android:id="@+id/nav_platos_to_platosAddUpdate"
-            app:destination="@+id/platosAddUpdateFragment"
-            app:popUpTo="@id/nav_platos" />
     </fragment>
 
     <fragment
-        android:id="@+id/platosAddUpdateFragment"
+        android:id="@+id/nav_platosAddUpdateFragment"
         android:name="com.utp.comidaencasav1.ui.platos.PlatosAddUpdateFragment"
         android:label="Mis Platos"
         tools:layout="@layout/fragment_platos_add_update">
