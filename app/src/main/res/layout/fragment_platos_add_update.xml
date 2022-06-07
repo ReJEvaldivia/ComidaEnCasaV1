@@ -13,7 +13,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
         android:text="Nombre del plato"
-        android:textColor="#FEFEFE"
+        android:textColor="@color/blue_3"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"

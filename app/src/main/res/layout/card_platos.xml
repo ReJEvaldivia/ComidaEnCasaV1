@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:backgroundTint="@color/white"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
@@ -30,32 +31,34 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:text="NombrePlato"
+                android:textColor="#000000"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/btnEditar_Plato"
-                android:layout_width="71dp"
-                android:layout_height="48dp"
+                android:layout_width="48dp"
+                android:layout_height="50dp"
                 android:layout_marginEnd="10dp"
-                android:text="Editar"
-                android:textSize="8sp"
+                android:backgroundTint="@color/white"
+                android:drawableTop="@drawable/ic_editar"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/btnDetalle_Plato"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/btnDetalle_Plato"
-                android:layout_width="71dp"
-                android:layout_height="48dp"
+                android:layout_width="48dp"
+                android:layout_height="50dp"
                 android:layout_marginEnd="10dp"
-                android:text="Detalle"
-                android:textSize="8sp"
+                android:backgroundTint="@color/white"
+                android:drawableTop="@drawable/ic_detalle_plato"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>

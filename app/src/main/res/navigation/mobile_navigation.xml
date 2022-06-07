@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_platos">
 
     <fragment
         android:id="@+id/nav_home"
@@ -37,7 +37,7 @@
     <fragment
         android:id="@+id/platosAddUpdateFragment"
         android:name="com.utp.comidaencasav1.ui.platos.PlatosAddUpdateFragment"
-        android:label="fragment_platos_add_update"
+        android:label="Mis Platos"
         tools:layout="@layout/fragment_platos_add_update">
         <argument
             android:name="arg_item"
