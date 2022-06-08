@@ -1,9 +1,8 @@
 package com.utp.comidaencasav1.model.repositories
 
-import android.util.Log
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.toObject
-import com.google.firebase.firestore.ktx.toObjects
 import com.utp.comidaencasav1.model.models.Plato
 import com.utp.comidaencasav1.presenter.PlatoPresenter
 
@@ -35,7 +34,7 @@ class PlatoRepositoryImpl(var platoPresenter: PlatoPresenter) : PlatoRepository 
         val docRef = db.collection("Plato")
 
         //Recupera con filtros
-        docRef.whereEqualTo("idCuenta", 1).whereEqualTo("idUsuarioCreador", 3)
+        docRef.whereEqualTo("idCuenta", 1).whereEqualTo("idUsuarioCreador", 3).orderBy("nombre")
             .get()
             .addOnSuccessListener { documents ->
                 var platos: ArrayList<Plato>? = ArrayList()
@@ -61,11 +60,9 @@ class PlatoRepositoryImpl(var platoPresenter: PlatoPresenter) : PlatoRepository 
         docRef.get().addOnSuccessListener { documents ->
             val platos = ArrayList(documents.toObjects<Plato>())
             platoPresenter.showPlatos(platos)
-        }
-            .addOnFailureListener { exception ->
-                Log.d("Firebase Message", "Error writing document", exception)
-            }
-            */
+        }.addOnFailureListener { exception ->
+            Log.d("Firebase Message", "Error writing document", exception)
+        }*/
 
 
     }

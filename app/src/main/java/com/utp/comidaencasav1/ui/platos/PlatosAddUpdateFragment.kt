@@ -13,6 +13,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
+import com.google.firebase.firestore.ktx.toObjects
 import com.utp.comidaencasav1.R
 import com.utp.comidaencasav1.databinding.FragmentPlatosAddUpdateBinding
 import com.utp.comidaencasav1.model.models.Plato
@@ -28,9 +30,10 @@ class PlatosAddUpdateFragment : Fragment() {
     ): View? {
         _binding = FragmentPlatosAddUpdateBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
         var idDocumento: String = ""
         var edtNombre: EditText = binding.edtNombrePlatoAU
-        var chkParticipa: CheckBox = binding.chkParticipaPlatoAU
+        var chkEstadoVisibilidad: CheckBox = binding.chkEstadoVisibilidadPlatoAU
         var btnEliminar: Button = binding.btnEliminarPlatoAU
         var btnEditar: Button = binding.btnEditarPlatoAU
         var btnRegistrar: Button = binding.btnRegistrarPlatoAU
@@ -39,72 +42,86 @@ class PlatosAddUpdateFragment : Fragment() {
         val item = arguments?.getSerializable("arg_item")
         if (item != null) {
             //Editar plato
+            btnRegistrar.isVisible = false
+
             val plato = item as Plato
             idDocumento = plato.idDocumento
             edtNombre.setText(plato.nombre)
-            btnRegistrar.isVisible = false
+            chkEstadoVisibilidad.isChecked = plato.estadoVisibilidad
         } else {
             //Nuevo plato
             btnEliminar.isVisible = false
             btnEditar.isVisible = false
         }
 
-        binding.btnRegistrarPlatoAU.setOnClickListener {
+        //Crear una instancia de Firebase
+        val db = FirebaseFirestore.getInstance()
 
+        binding.btnRegistrarPlatoAU.setOnClickListener {
             var plato: Plato = Plato()
+            plato.idDocumento = idDocumento
             plato.idCuenta = 1
             plato.idUsuarioCreador = 3
             plato.nombre = edtNombre.text.toString()
-            plato.estadoVisibilidad = chkParticipa.isChecked
-
-            val db = FirebaseFirestore.getInstance()
+            plato.estadoVisibilidad = chkEstadoVisibilidad.isChecked
 
             //INSERT 😎
             val platoRef = db.collection("Plato")
-                .add(plato)
-                .addOnSuccessListener {
-                    Log.d(
-                        "Firebase Message",
-                        "DocumentSnapshot successfully written!"
-                    )
-                }
-                .addOnFailureListener { e ->
-                    Log.d(
-                        "Firebase Message",
-                        "Error writing document",
-                        e
-                    )
-                }
 
-            it.findNavController().navigate(R.id.nav_platos)
+            platoRef.orderBy("idPlato", Query.Direction.DESCENDING).limit(1).get()
+                .addOnSuccessListener { queryDocumentSnapshot ->
+                    val platos = ArrayList(queryDocumentSnapshot.toObjects<Plato>())
+                    var idPlatoCount: Int = 0
+                    if (platos.size > 0) {
+                        idPlatoCount =
+                            platos[0].idPlato//Recupera el último idPlato registrado en la BD
+                    }
+                    plato.idPlato = idPlatoCount + 1
+
+                    platoRef.add(plato)
+                        .addOnSuccessListener {
+                            root.findNavController()
+                                .navigate(R.id.nav_platos)//Navegar al Fragment platos
+                        }
+                        .addOnFailureListener { e ->
+                            Log.d(
+                                "Firebase Message",
+                                "Error writing document",
+                                e
+                            )
+                        }
+                }
         }
 
 
         binding.btnEditarPlatoAU.setOnClickListener {
-
             var plato: Plato = Plato()
-            plato.idCuenta = 1
-            plato.idUsuarioCreador = 3
+            plato.idDocumento = idDocumento
             plato.nombre = edtNombre.text.toString()
-            plato.estadoVisibilidad = chkParticipa.isChecked
-
-            val db = FirebaseFirestore.getInstance()
+            plato.estadoVisibilidad = chkEstadoVisibilidad.isChecked
 
             //UPDATE
             val update = db.collection("Plato").document(idDocumento)
-                .update("nombre", plato.nombre)
-
-            it.findNavController().navigate(R.id.nav_platos)
+                .update(
+                    mapOf(
+                        "idDocumento" to plato.idDocumento,
+                        "nombre" to plato.nombre,
+                        "estadoVisibilidad" to plato.estadoVisibilidad
+                    )
+                ).addOnSuccessListener {
+                    root.findNavController()
+                        .navigate(R.id.nav_platos)
+                }
         }
 
         binding.btnEliminarPlatoAU.setOnClickListener {
 
-            val db = FirebaseFirestore.getInstance()
             //DELETE
             db.collection("Plato").document(idDocumento)
-                .delete()
-
-            it.findNavController().navigate(R.id.nav_platos)
+                .delete().addOnSuccessListener {
+                    root.findNavController()
+                        .navigate(R.id.nav_platos)
+                }
         }
 
         return root

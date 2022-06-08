@@ -47,7 +47,7 @@
         app:layout_constraintTop_toBottomOf="@+id/edtNombre_PlatoAU" />
 
     <CheckBox
-        android:id="@+id/chkParticipa_PlatoAU"
+        android:id="@+id/chkEstadoVisibilidad_PlatoAU"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         app:layout_constraintBottom_toBottomOf="@+id/textView3"
