@@ -15,14 +15,31 @@
         tools:targetApi="31">
         <activity
             android:name=".CuentaActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Theme.ComidaEnCasaV1.NoActionBar">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity
             android:name=".PerfilActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Theme.ComidaEnCasaV1.NoActionBar">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity
             android:name=".LoginActivity"
             android:exported="true"
-            android:label="INICIAR SESION" />
+            android:theme="@style/Theme.ComidaEnCasaV1.NoActionBar">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity
             android:name=".MainActivity"
             android:exported="true"

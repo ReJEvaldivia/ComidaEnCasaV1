@@ -10,4 +10,8 @@
     <color name="blue_1">#2962ff</color>
     <color name="blue_2">#768fff</color>
     <color name="blue_3">#0039cb</color>
+    <color name="blue_night_1">#303f9f</color>
+    <color name="blue_night_2">#666ad1</color>
+    <color name="blue_night_3">#001970</color>
+
 </resources>

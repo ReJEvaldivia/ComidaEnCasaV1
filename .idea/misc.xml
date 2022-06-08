@@ -9,7 +9,7 @@
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/drawable/ic_menu_gallery.xml" value="0.1405" />
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/drawable/ic_menu_slideshow.xml" value="0.1405" />
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/drawable/side_nav_bar.xml" value="0.134" />
-        <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/activity_cuenta.xml" value="0.2210144927536232" />
+        <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/activity_cuenta.xml" value="0.2" />
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/activity_main.xml" value="0.12273550724637682" />
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/activity_perfil.xml" value="0.264" />
@@ -22,9 +22,10 @@
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/fragment_platos.xml" value="0.264" />
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/fragment_platos_add_update.xml" value="0.4" />
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/fragment_slideshow.xml" value="0.17572463768115942" />
-        <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/nav_header_main.xml" value="0.4" />
+        <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/nav_header_main.xml" value="0.264" />
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/menu/activity_main_drawer.xml" value="0.2171875" />
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/menu/main.xml" value="0.2171875" />
+        <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1225" />
         <entry key="..\:/Users/RENZO-GAMER/AndroidStudioProjects/ComidaEnCasaV1/app/src/main/res/layout/app_bar_main.xml" value="0.15729166666666666" />
         <entry key="..\:/Users/RENZO-GAMER/AndroidStudioProjects/ComidaEnCasaV1/app/src/main/res/layout/card_platos.xml" value="0.2916666666666667" />
         <entry key="..\:/Users/RENZO-GAMER/AndroidStudioProjects/ComidaEnCasaV1/app/src/main/res/layout/content_main.xml" value="0.15729166666666666" />
