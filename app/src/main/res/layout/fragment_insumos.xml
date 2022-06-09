@@ -19,8 +19,9 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="0dp"
-        android:layout_height="160dp"
+        android:layout_height="400dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="15dp"
@@ -36,7 +37,7 @@
 
             <TextView
                 android:id="@+id/textView44"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="30dp"
                 android:layout_weight="1"
                 android:background="@color/blue_1"
@@ -49,7 +50,7 @@
 
             <TextView
                 android:id="@+id/textView45"
-                android:layout_width="wrap_content"
+                android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_weight="1"
                 android:background="@color/blue_1"
@@ -62,7 +63,7 @@
 
             <TextView
                 android:id="@+id/textView8"
-                android:layout_width="wrap_content"
+                android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_weight="1"
                 android:background="@color/blue_1"
@@ -75,7 +76,7 @@
 
             <TextView
                 android:id="@+id/textView9"
-                android:layout_width="wrap_content"
+                android:layout_width="1dp"
                 android:layout_height="30dp"
                 android:layout_weight="1"
                 android:background="@color/blue_1"
@@ -98,21 +99,23 @@
     <Button
         android:id="@+id/btnGuardar_Insumo"
         android:layout_width="161dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="30dp"
         android:text="GUARDAR STOCK"
-        app:layout_constraintBottom_toTopOf="@+id/btnNuevo_Insumo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
     <Button
         android:id="@+id/btnNuevo_Insumo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:layout_marginBottom="80dp"
         android:text="NUEVO INSUMO"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnGuardar_Insumo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

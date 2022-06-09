@@ -36,11 +36,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         //Recuperar el item
-        val bundle = intent.extras!!
+        /*val bundle = intent.extras!!
         val ext_usuario = bundle.get("ext_usuario")
         val usuario = ext_usuario as Usuario
 
-        val bundle2 = bundleOf("arg_usuario" to usuario)
+        val bundle2 = bundleOf("arg_usuario" to usuario)*/
         //it.findNavController().navigate(R.id.nav_platosAddUpdateFragment, bundle)//pendiente el envío de argumentos
 
         val drawerLayout: DrawerLayout = binding.drawerLayout

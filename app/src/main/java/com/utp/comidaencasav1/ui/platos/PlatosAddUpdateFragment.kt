@@ -66,7 +66,7 @@ class PlatosAddUpdateFragment : Fragment() {
             plato.nombre = edtNombre.text.toString()
             plato.estadoVisibilidad = chkEstadoVisibilidad.isChecked
 
-            //INSERT 😎
+            //INSERT
             platoRef.orderBy("idPlato", Query.Direction.DESCENDING).limit(1).get()
                 .addOnSuccessListener { querySnapshot ->
                     val platos = ArrayList(querySnapshot.toObjects<Plato>())

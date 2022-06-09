@@ -37,11 +37,11 @@ class PlatosAdapter(var platos: ArrayList<Plato>?, var resource: Int) :
     }
 
     class CardPlatoHolder(v: View) : RecyclerView.ViewHolder(v) {
-        public var plato: Plato? = null
-        public var txtNombre: TextView = v.findViewById(R.id.txtNombre_Plato)
-        public var clay: ConstraintLayout = v.findViewById(R.id.clay_Plato)
-        public var btnEditar: Button = v.findViewById(R.id.btnEditar_Plato)
-        public var btnDetalle: Button = v.findViewById(R.id.btnDetalle_Plato)
+        var plato: Plato? = null
+        var txtNombre: TextView = v.findViewById(R.id.txtNombre_Plato)
+        var btnEditar: Button = v.findViewById(R.id.btnEditar_Plato)
+        var btnDetalle: Button = v.findViewById(R.id.btnDetalle_Plato)
+        var clay: ConstraintLayout = v.findViewById(R.id.clay_Plato)
 
         fun setDataCard(plato: Plato?) {
             this.plato = plato

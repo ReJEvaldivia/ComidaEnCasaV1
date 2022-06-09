@@ -13,8 +13,10 @@
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/activity_main.xml" value="0.12273550724637682" />
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/activity_perfil.xml" value="0.264" />
+        <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/activity_perfil_create.xml" value="0.2033514492753623" />
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/app_bar_main.xml" value="0.17572463768115942" />
-        <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/card_lista.xml" value="0.4" />
+        <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/card_insumos.xml" value="0.264" />
+        <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/card_lista.xml" value="0.264" />
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/card_lista_votacion.xml" value="0.4" />
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/card_perfil.xml" value="0.264" />
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/card_platos.xml" value="0.4" />
@@ -25,6 +27,7 @@
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/fragment_gallery.xml" value="0.18115942028985507" />
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/fragment_home.xml" value="0.21195652173913043" />
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/fragment_insumos.xml" value="0.264" />
+        <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/fragment_insumos_add_update.xml" value="0.264" />
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/fragment_lista.xml" value="0.2028985507246377" />
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/fragment_perfil_add_update.xml" value="0.2105978260869565" />
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/fragment_platos.xml" value="0.264" />

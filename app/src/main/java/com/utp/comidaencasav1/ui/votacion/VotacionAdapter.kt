@@ -31,11 +31,10 @@ class VotacionAdapter (var platos: ArrayList<Plato>?, var resource: Int) :
     }
 
     class CardPlatoHolder(v: View) : RecyclerView.ViewHolder(v) {
-        public var plato: Plato? = null
-        public var txtNombre: TextView = v.findViewById(R.id.txtNombrePlato_Votacion)
-        public var btnVotar: Button = v.findViewById(R.id.btnVotar_Votacion)
-
-        public var clay: ConstraintLayout = v.findViewById(R.id.clay_Votacion)
+        var plato: Plato? = null
+        var txtNombre: TextView = v.findViewById(R.id.txtNombrePlato_Votacion)
+        var btnVotar: Button = v.findViewById(R.id.btnVotar_Votacion)
+        var clay: ConstraintLayout = v.findViewById(R.id.clay_Votacion)
 
         fun setDataCard(plato: Plato?) {
             this.plato = plato
