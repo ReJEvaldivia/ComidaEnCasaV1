@@ -5,20 +5,39 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_home" />
+            android:id="@+id/nav_lista"
+            android:icon="@drawable/ic_menu_lista_general"
+            android:title="@string/menu_lista" />
+
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
+            android:id="@+id/nav_insumos"
+            android:icon="@drawable/ic_menu_stock_insumos"
+            android:title="@string/menu_insumos" />
+
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:id="@+id/nav_categoria"
+            android:icon="@drawable/ic_menu_categoria_semanal"
+            android:title="@string/menu_categoria" />
         <item
             android:id="@+id/nav_platos"
             android:icon="@drawable/ic_menu_mis_platos"
             android:title="@string/menu_platos" />
+
+        <item
+            android:id="@+id/nav_votacion"
+            android:icon="@drawable/ic_menu_realizar_votacion"
+            android:title="@string/menu_votacion" />
+
+        <item
+            android:id="@+id/nav_perfilAddUpdate"
+            android:icon="@drawable/ic_menu_administrar_perfil"
+            android:title="@string/menu_perfil" />
+
+        <item
+            android:id="@+id/nav_cuentaAddUpdate"
+            android:icon="@drawable/ic_menu_administrar_cuenta"
+            android:title="@string/menu_cuenta" />
+
+
     </group>
 </menu>
