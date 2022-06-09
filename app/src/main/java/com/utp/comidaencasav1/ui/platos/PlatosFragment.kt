@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.utp.comidaencasav1.R
+import com.utp.comidaencasav1.databinding.FragmentPlatosAddUpdateBinding
 import com.utp.comidaencasav1.databinding.FragmentPlatosBinding
 import com.utp.comidaencasav1.model.models.Plato
 import com.utp.comidaencasav1.presenter.PlatoPresenter
@@ -19,9 +21,6 @@ import com.utp.comidaencasav1.view.PlatoView
 class PlatosFragment : Fragment(), PlatoView {
 
     private var _binding: FragmentPlatosBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     private var platoPresenter: PlatoPresenter? = null
@@ -44,13 +43,11 @@ class PlatosFragment : Fragment(), PlatoView {
         rvPlatos = binding.rcvPlatosPlato//UI
         rvPlatos?.layoutManager = LinearLayoutManager(this.context)
 
-        getPlatos()
+        getPlatos(3)
 
-        val nav = Navigation.createNavigateOnClickListener(R.id.nav_platosAddUpdateFragment)
-
-        _binding!!.btnNuevoPlato.setOnClickListener({
-            nav.onClick(it)
-        })
+        _binding!!.btnNuevoPlato.setOnClickListener {
+            root.findNavController().navigate(R.id.nav_platosAddUpdateFragment)
+        }
 
         return root
     }
@@ -72,8 +69,8 @@ class PlatosFragment : Fragment(), PlatoView {
         }
     }
 
-    override fun getPlatos() {
-        platoPresenter?.getPlatos()
+    override fun getPlatos(idUsuarioCreador: Int) {
+        platoPresenter?.getPlatos(idUsuarioCreador)
     }
 
 }

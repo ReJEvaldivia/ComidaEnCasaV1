@@ -13,7 +13,7 @@ class PlatoPresenterImpl (var platoView: PlatoView): PlatoPresenter{
         platoView.showPlatos(platos)
     }
 
-    override fun getPlatos() {
-        platoInteractor.getPlatosFirebase()
+    override fun getPlatos(idUsuarioCreador: Int) {
+        platoInteractor.getPlatosFirebase(idUsuarioCreador)
     }
 }

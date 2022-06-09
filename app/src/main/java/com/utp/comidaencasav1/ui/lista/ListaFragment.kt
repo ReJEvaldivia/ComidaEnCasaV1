@@ -43,7 +43,7 @@ class ListaFragment : Fragment(), PlatoView {
         rvLista = binding.rcvPlatosLista//UI
         rvLista?.layoutManager = LinearLayoutManager(this.context)
 
-        getPlatos()
+        getPlatos(3)
 
 
         return root
@@ -66,9 +66,8 @@ class ListaFragment : Fragment(), PlatoView {
         }
     }
 
-    override fun getPlatos() {
-        platoPresenter?.getPlatos()
+    override fun getPlatos(idUsuarioCreador: Int) {
+        platoPresenter?.getPlatos(idUsuarioCreador)
     }
-
 
 }

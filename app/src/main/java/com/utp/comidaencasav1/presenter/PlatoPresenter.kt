@@ -7,5 +7,5 @@ interface PlatoPresenter {
     fun showPlatos(platos: ArrayList<Plato>?)
 
     //Interactor
-    fun getPlatos()
+    fun getPlatos(idUsuarioCreador: Int)
 }

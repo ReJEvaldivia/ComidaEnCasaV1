@@ -29,8 +29,8 @@ class PlatosAdapter(var platos: ArrayList<Plato>?, var resource: Int) :
         var plato = platos?.get(position)
         holder.setDataCard(plato)
 
-        val bundle = bundleOf("arg_item" to plato)
-
+        //Enviar argumentos a otro fragment
+        val bundle = bundleOf("arg_plato" to plato)
         holder.btnEditar.setOnClickListener(View.OnClickListener {
             it.findNavController().navigate(R.id.nav_platosAddUpdateFragment, bundle)
         })

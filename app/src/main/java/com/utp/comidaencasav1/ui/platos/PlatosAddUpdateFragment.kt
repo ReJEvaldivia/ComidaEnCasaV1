@@ -39,12 +39,12 @@ class PlatosAddUpdateFragment : Fragment() {
         var btnRegistrar: Button = binding.btnRegistrarPlatoAU
 
         //Recuperar el item
-        val item = arguments?.getSerializable("arg_item")
-        if (item != null) {
+        val arg_plato = arguments?.getSerializable("arg_plato")
+        if (arg_plato != null) {
             //Editar plato
             btnRegistrar.isVisible = false
 
-            val plato = item as Plato
+            val plato = arg_plato as Plato
             idDocumento = plato.idDocumento
             edtNombre.setText(plato.nombre)
             chkEstadoVisibilidad.isChecked = plato.estadoVisibilidad
@@ -56,8 +56,9 @@ class PlatosAddUpdateFragment : Fragment() {
 
         //Crear una instancia de Firebase
         val db = FirebaseFirestore.getInstance()
+        val platoRef = db.collection("Plato")
 
-        binding.btnRegistrarPlatoAU.setOnClickListener {
+        btnRegistrar.setOnClickListener {
             var plato: Plato = Plato()
             plato.idDocumento = idDocumento
             plato.idCuenta = 1
@@ -66,17 +67,15 @@ class PlatosAddUpdateFragment : Fragment() {
             plato.estadoVisibilidad = chkEstadoVisibilidad.isChecked
 
             //INSERT 😎
-            val platoRef = db.collection("Plato")
-
             platoRef.orderBy("idPlato", Query.Direction.DESCENDING).limit(1).get()
-                .addOnSuccessListener { queryDocumentSnapshot ->
-                    val platos = ArrayList(queryDocumentSnapshot.toObjects<Plato>())
-                    var idPlatoCount: Int = 0
+                .addOnSuccessListener { querySnapshot ->
+                    val platos = ArrayList(querySnapshot.toObjects<Plato>())
+                    var idCount: Int = 0
                     if (platos.size > 0) {
-                        idPlatoCount =
+                        idCount =
                             platos[0].idPlato//Recupera el último idPlato registrado en la BD
                     }
-                    plato.idPlato = idPlatoCount + 1
+                    plato.idPlato = idCount + 1
 
                     platoRef.add(plato)
                         .addOnSuccessListener {
@@ -93,15 +92,14 @@ class PlatosAddUpdateFragment : Fragment() {
                 }
         }
 
-
-        binding.btnEditarPlatoAU.setOnClickListener {
+        btnEditar.setOnClickListener {
             var plato: Plato = Plato()
             plato.idDocumento = idDocumento
             plato.nombre = edtNombre.text.toString()
             plato.estadoVisibilidad = chkEstadoVisibilidad.isChecked
 
             //UPDATE
-            val update = db.collection("Plato").document(idDocumento)
+            platoRef.document(idDocumento)
                 .update(
                     mapOf(
                         "idDocumento" to plato.idDocumento,
@@ -114,10 +112,9 @@ class PlatosAddUpdateFragment : Fragment() {
                 }
         }
 
-        binding.btnEliminarPlatoAU.setOnClickListener {
-
+        btnEliminar.setOnClickListener {
             //DELETE
-            db.collection("Plato").document(idDocumento)
+            platoRef.document(idDocumento)
                 .delete().addOnSuccessListener {
                     root.findNavController()
                         .navigate(R.id.nav_platos)

@@ -2,6 +2,7 @@ package com.utp.comidaencasav1
 
 import android.os.Bundle
 import android.view.Menu
+import android.view.View
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
@@ -11,7 +12,10 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import com.utp.comidaencasav1.databinding.ActivityMainBinding
+import com.utp.comidaencasav1.model.models.Cuenta
+import com.utp.comidaencasav1.model.models.Usuario
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,6 +34,15 @@ class MainActivity : AppCompatActivity() {
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
+
+        //Recuperar el item
+        val bundle = intent.extras!!
+        val ext_usuario = bundle.get("ext_usuario")
+        val usuario = ext_usuario as Usuario
+
+        val bundle2 = bundleOf("arg_usuario" to usuario)
+        //it.findNavController().navigate(R.id.nav_platosAddUpdateFragment, bundle)//pendiente el envío de argumentos
+
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_main)

@@ -48,7 +48,7 @@ class VotacionFragment : Fragment(), PlatoView {
         rvPlatosPuntajeVotacion = binding.rcvPuntajeVotacion//UI
         rvPlatosPuntajeVotacion?.layoutManager = LinearLayoutManager(this.context)
 
-        getPlatos()
+        getPlatos(3)
 
         return root
     }
@@ -75,8 +75,9 @@ class VotacionFragment : Fragment(), PlatoView {
         }
     }
 
-    override fun getPlatos() {
-        platoPresenter?.getPlatos()
+    override fun getPlatos(idUsuarioCreador: Int) {
+        platoPresenter?.getPlatos(idUsuarioCreador)
     }
+
 
 }

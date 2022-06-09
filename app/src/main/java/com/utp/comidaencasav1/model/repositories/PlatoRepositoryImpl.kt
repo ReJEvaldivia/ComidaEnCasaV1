@@ -1,14 +1,17 @@
 package com.utp.comidaencasav1.model.repositories
 
+import android.util.Log
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.toObject
+import com.google.firebase.firestore.ktx.toObjects
 import com.utp.comidaencasav1.model.models.Plato
+import com.utp.comidaencasav1.model.models.Usuario
 import com.utp.comidaencasav1.presenter.PlatoPresenter
 
 class PlatoRepositoryImpl(var platoPresenter: PlatoPresenter) : PlatoRepository {
     //TODA LA LÓGICA DE CONEXIÓN
-    override fun getPlatosFirebase() {
+    override fun getPlatosFirebase(idUsuarioCreador: Int) {
         //CONTROLLER
         var platos: ArrayList<Plato>? = ArrayList<Plato>()
         var plato1: Plato = Plato()
@@ -24,22 +27,22 @@ class PlatoRepositoryImpl(var platoPresenter: PlatoPresenter) : PlatoRepository 
         //platoPresenter.showPlatos(platos)
 
         //Traer los platos de Firebase
-        getShowPlatos()
+        getShowPlatos(idUsuarioCreador)
 
     }
 
-    fun getShowPlatos() {
+    fun getShowPlatos(idUsuarioCreador: Int) {
         //Log.d("Datos TEST 1", "HOLAS")
         val db = FirebaseFirestore.getInstance()
-        val docRef = db.collection("Plato")
+        val platoRef = db.collection("Plato")
 
         //Recupera con filtros
-        docRef.whereEqualTo("idCuenta", 1).whereEqualTo("idUsuarioCreador", 3).orderBy("nombre")
+        platoRef.whereEqualTo("idUsuarioCreador", idUsuarioCreador).orderBy("nombre")
             .get()
-            .addOnSuccessListener { documents ->
+            .addOnSuccessListener { querySnapshot ->
                 var platos: ArrayList<Plato>? = ArrayList()
-                for (document in documents) {
-                    val plato = document.toObject<Plato>()!!
+                for (document in querySnapshot) {
+                    val plato = document.toObject<Plato>()
                     plato.idDocumento = document.id
                     platos?.add(plato)
                 }
@@ -48,17 +51,17 @@ class PlatoRepositoryImpl(var platoPresenter: PlatoPresenter) : PlatoRepository 
 
         /*
         //Recupera 1 documento
-        docRef.document("FjvPTqZZw54xYCzBvdgk").get().addOnSuccessListener { document ->
-            val plato = document.toObject<Plato>()!!
-            plato.idDocumento = document.id
+        platoRef.document("FjvPTqZZw54xYCzBvdgk").get().addOnSuccessListener { documentSnapshot ->
+            val plato = documentSnapshot.toObject<Plato>()!!
+            plato.idDocumento = documentSnapshot.id
             var platos: ArrayList<Plato>? = ArrayList()
             platos?.add(plato)
             platoPresenter.showPlatos(platos)
         }
 
         //Recupera todos los documentos
-        docRef.get().addOnSuccessListener { documents ->
-            val platos = ArrayList(documents.toObjects<Plato>())
+        platoRef.get().addOnSuccessListener { querySnapshot ->
+            val platos = ArrayList(querySnapshot.toObjects<Plato>())
             platoPresenter.showPlatos(platos)
         }.addOnFailureListener { exception ->
             Log.d("Firebase Message", "Error writing document", exception)
@@ -66,4 +69,6 @@ class PlatoRepositoryImpl(var platoPresenter: PlatoPresenter) : PlatoRepository 
 
 
     }
+
+
 }

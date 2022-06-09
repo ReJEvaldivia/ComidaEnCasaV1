@@ -7,8 +7,8 @@ import com.utp.comidaencasav1.presenter.PlatoPresenter
 class PlatosInteractorImpl(var platoPresenter: PlatoPresenter): PlatosInteractor {
     private var platoRepository: PlatoRepository = PlatoRepositoryImpl(platoPresenter)
 
-    override fun getPlatosFirebase() {
-        platoRepository.getPlatosFirebase()
+    override fun getPlatosFirebase(idUsuarioCreador: Int) {
+        platoRepository.getPlatosFirebase(idUsuarioCreador)
     }
 
 }
