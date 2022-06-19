@@ -7,14 +7,14 @@
 
     <fragment
         android:id="@+id/nav_platos"
-        android:name="com.utp.comidaencasav1.ui.platos.PlatosFragment"
+        android:name="com.utp.comidaencasav1.view.fragment.platos.PlatosFragment"
         android:label="@string/menu_platos"
         tools:layout="@layout/fragment_platos">
     </fragment>
 
     <fragment
         android:id="@+id/nav_platosAddUpdateFragment"
-        android:name="com.utp.comidaencasav1.ui.platos.PlatosAddUpdateFragment"
+        android:name="com.utp.comidaencasav1.view.fragment.platos.PlatosAddUpdateFragment"
         android:label="@string/menu_platos"
         tools:layout="@layout/fragment_platos_add_update">
         <argument
@@ -25,65 +25,65 @@
 
     <fragment
         android:id="@+id/nav_platosDetalleFragment"
-        android:name="com.utp.comidaencasav1.ui.platos.PlatosDetalleFragment"
+        android:name="com.utp.comidaencasav1.view.fragment.platos.PlatosDetalleFragment"
         android:label="@string/menu_platos"
         tools:layout="@layout/fragment_platos_detalle" />
 
     <fragment
         android:id="@+id/nav_lista"
-        android:name="com.utp.comidaencasav1.ui.lista.ListaFragment"
+        android:name="com.utp.comidaencasav1.view.fragment.lista.ListaFragment"
         android:label="@string/menu_lista"
         tools:layout="@layout/fragment_lista" />
 
     <fragment
         android:id="@+id/nav_insumos"
-        android:name="com.utp.comidaencasav1.ui.insumos.InsumosFragment"
+        android:name="com.utp.comidaencasav1.view.fragment.insumos.InsumosFragment"
         android:label="@string/menu_insumos"
         tools:layout="@layout/fragment_insumos" />
 
     <fragment
         android:id="@+id/nav_insumosAddUpdateFragment"
-        android:name="com.utp.comidaencasav1.ui.insumos.InsumosAddUpdateFragment"
+        android:name="com.utp.comidaencasav1.view.fragment.insumos.InsumosAddUpdateFragment"
         android:label="@string/menu_insumos"
         tools:layout="@layout/fragment_insumos_add_update" />
 
     <fragment
         android:id="@+id/nav_cuentaAddUpdate"
-        android:name="com.utp.comidaencasav1.ui.cuenta.CuentaUpdateFragment"
+        android:name="com.utp.comidaencasav1.view.fragment.cuenta.CuentaUpdateFragment"
         android:label="@string/menu_cuenta"
         tools:layout="@layout/fragment_cuenta_update" />
 
     <fragment
         android:id="@+id/nav_perfilAddUpdate"
-        android:name="com.utp.comidaencasav1.ui.perfil.PerfilUpdateFragment"
+        android:name="com.utp.comidaencasav1.view.fragment.perfil.PerfilUpdateFragment"
         android:label="@string/menu_perfil"
         tools:layout="@layout/fragment_perfil_update" />
     
     <fragment
         android:id="@+id/nav_categoria"
-        android:name="com.utp.comidaencasav1.ui.categoria.CategoriaFragment"
+        android:name="com.utp.comidaencasav1.view.fragment.categoria.CategoriaFragment"
         android:label="@string/menu_categoria"
         tools:layout="@layout/fragment_categoria" />
 
     <fragment
         android:id="@+id/nav_votacion"
-        android:name="com.utp.comidaencasav1.ui.votacion.VotacionFragment"
+        android:name="com.utp.comidaencasav1.view.fragment.votacion.VotacionFragment"
         android:label="@string/menu_votacion"
         tools:layout="@layout/fragment_votacion" />
 
     <fragment
         android:id="@+id/nav_platoDia"
-        android:name="com.utp.comidaencasav1.ui.platodia.PlatoDiaFragment"
+        android:name="com.utp.comidaencasav1.view.fragment.platodia.PlatoDiaFragment"
         android:label="@string/menu_plato_dia"
         tools:layout="@layout/fragment_plato_dia" />
     <fragment
         android:id="@+id/nav_reporte"
-        android:name="com.utp.comidaencasav1.ui.reporte.ReporteFragment"
+        android:name="com.utp.comidaencasav1.view.fragment.reporte.ReporteFragment"
         android:label="@string/menu_reporte"
         tools:layout="@layout/fragment_reporte" />
     <fragment
         android:id="@+id/nav_calendario"
-        android:name="com.utp.comidaencasav1.ui.calendario.CalendarioFragment"
+        android:name="com.utp.comidaencasav1.view.fragment.calendario.CalendarioFragment"
         android:label="@string/menu_calendario"
         tools:layout="@layout/fragment_calendario" />
 
