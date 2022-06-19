@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.cuenta.CuentaAddUpdateFragment">
+    tools:context=".ui.cuenta.CuentaUpdateFragment">
 
     <TextView
         android:id="@+id/textView20"
@@ -89,6 +89,7 @@
         android:layout_height="48dp"
         android:layout_marginTop="40dp"
         android:text="EDITAR CUENTA"
+        app:cornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtConstrasena_CuentaAU" />
@@ -99,6 +100,7 @@
         android:layout_height="48dp"
         android:layout_marginTop="30dp"
         android:text="ELIMINAR CUENTA"
+        app:cornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"

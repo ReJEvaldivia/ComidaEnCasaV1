@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.109" />
+        <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/drawable/barra_busqueda_personalizada.xml" value="0.1" />
+        <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/drawable/contenedor_personalizado.xml" value="0.1745" />
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1405" />
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/drawable/ic_menu_camera.xml" value="0.1405" />
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/drawable/ic_menu_gallery.xml" value="0.1405" />
@@ -12,16 +14,21 @@
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/activity_cuenta.xml" value="0.2" />
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/activity_main.xml" value="0.12273550724637682" />
-        <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/activity_perfil.xml" value="0.264" />
+        <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/activity_perfil.xml" value="0.4" />
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/activity_perfil_create.xml" value="0.2033514492753623" />
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/app_bar_main.xml" value="0.17572463768115942" />
+        <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/card_ingredientes_plato_detalle.xml" value="0.2" />
+        <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/card_ingredientes_plato_dia.xml" value="0.4" />
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/card_insumos.xml" value="0.264" />
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/card_lista.xml" value="0.264" />
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/card_lista_votacion.xml" value="0.4" />
-        <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/card_perfil.xml" value="0.264" />
+        <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/card_perfil.xml" value="0.4" />
+        <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/card_plato_detalle.xml" value="0.15942028985507245" />
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/card_platos.xml" value="0.4" />
+        <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/card_preparacion_plato_detalle.xml" value="0.264" />
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/card_puntajes_votacion.xml" value="0.4" />
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/content_main.xml" value="0.2" />
+        <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/fragment_calendario.xml" value="0.19067028985507245" />
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/fragment_categoria.xml" value="0.264" />
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/fragment_cuenta_add_update.xml" value="0.264" />
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/fragment_gallery.xml" value="0.18115942028985507" />
@@ -30,12 +37,15 @@
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/fragment_insumos_add_update.xml" value="0.264" />
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/fragment_lista.xml" value="0.2028985507246377" />
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/fragment_perfil_add_update.xml" value="0.2105978260869565" />
+        <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/fragment_plato_dia.xml" value="0.264" />
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/fragment_platos.xml" value="0.264" />
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/fragment_platos_add_update.xml" value="0.4" />
+        <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/fragment_platos_detalle.xml" value="0.264" />
+        <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/fragment_reporte_add.xml" value="0.19067028985507245" />
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/fragment_slideshow.xml" value="0.17572463768115942" />
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/fragment_votacion.xml" value="0.1947463768115942" />
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/layout/nav_header_main.xml" value="0.264" />
-        <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/menu/activity_main_drawer.xml" value="0.2171875" />
+        <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/menu/activity_main_drawer.xml" value="0.536" />
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/menu/main.xml" value="0.2171875" />
         <entry key="..\:/GitHub/ComidaEnCasaV1/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1225" />
         <entry key="..\:/Users/RENZO-GAMER/AndroidStudioProjects/ComidaEnCasaV1/app/src/main/res/layout/app_bar_main.xml" value="0.15729166666666666" />

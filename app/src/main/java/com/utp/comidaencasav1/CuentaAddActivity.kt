@@ -3,26 +3,23 @@ package com.utp.comidaencasav1
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import androidx.navigation.findNavController
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.toObjects
-import com.utp.comidaencasav1.databinding.ActivityCuentaBinding
+import com.utp.comidaencasav1.databinding.ActivityCuentaAddBinding
 import com.utp.comidaencasav1.model.models.Cuenta
-import com.utp.comidaencasav1.model.models.Plato
 
-class CuentaActivity : AppCompatActivity() {
+class CuentaAddActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityCuentaBinding
+    private lateinit var binding: ActivityCuentaAddBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_cuenta)
-        binding = ActivityCuentaBinding.inflate(layoutInflater)
+        setContentView(R.layout.activity_cuenta_add)
+        binding = ActivityCuentaAddBinding.inflate(layoutInflater)
         val root: View = binding.root
         setContentView(root)
 

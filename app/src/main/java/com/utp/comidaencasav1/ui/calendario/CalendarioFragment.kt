@@ -1,4 +1,4 @@
-package com.utp.comidaencasav1.ui.perfil
+package com.utp.comidaencasav1.ui.calendario
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -8,24 +8,24 @@ import android.view.View
 import android.view.ViewGroup
 import com.utp.comidaencasav1.R
 
-class PerfilAddUpdateFragment : Fragment() {
+class CalendarioFragment : Fragment() {
 
     companion object {
-        fun newInstance() = PerfilAddUpdateFragment()
+        fun newInstance() = CalendarioFragment()
     }
 
-    private lateinit var viewModel: PerfilAddUpdateViewModel
+    private lateinit var viewModel: CalendarioViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_perfil_add_update, container, false)
+        return inflater.inflate(R.layout.fragment_calendario, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(PerfilAddUpdateViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(CalendarioViewModel::class.java)
         // TODO: Use the ViewModel
     }
 

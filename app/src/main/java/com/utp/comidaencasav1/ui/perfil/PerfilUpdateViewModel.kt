@@ -2,6 +2,6 @@ package com.utp.comidaencasav1.ui.perfil
 
 import androidx.lifecycle.ViewModel
 
-class PerfilAddUpdateViewModel : ViewModel() {
+class PerfilUpdateViewModel : ViewModel() {
     // TODO: Implement the ViewModel
 }

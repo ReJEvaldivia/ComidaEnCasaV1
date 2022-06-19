@@ -165,6 +165,7 @@
         android:layout_height="48dp"
         android:layout_marginTop="40dp"
         android:text="GUARDAR"
+        app:cornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />

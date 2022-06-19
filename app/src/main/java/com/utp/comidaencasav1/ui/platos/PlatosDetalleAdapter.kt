@@ -4,21 +4,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.os.bundleOf
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.utp.comidaencasav1.R
 import com.utp.comidaencasav1.model.models.Plato
 
-class PlatosAdapter(var platos: ArrayList<Plato>?, var resource: Int) :
-    RecyclerView.Adapter<PlatosAdapter.CardPlatoHolder>() {
+class PlatosDetalleAdapter(var platos: ArrayList<Plato>?, var resource: Int) :
+    RecyclerView.Adapter<PlatosDetalleAdapter.CardPlatoHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): CardPlatoHolder {
         var view: View = LayoutInflater.from(parent!!.context).inflate(resource, parent, false)
         return CardPlatoHolder(view)
-
     }
 
     override fun getItemCount(): Int {
@@ -28,28 +26,27 @@ class PlatosAdapter(var platos: ArrayList<Plato>?, var resource: Int) :
     override fun onBindViewHolder(holder: CardPlatoHolder, position: Int) {
         var plato = platos?.get(position)
         holder.setDataCard(plato)
+        holder.edtCantidad.setText("0")
+        holder.txtUnidad.setText("kg")
 
-        //Enviar argumentos a otro fragment
-        val bundle = bundleOf("arg_plato" to plato)
+        /*val bundle = bundleOf("arg_item" to plato)
+
         holder.btnEditar.setOnClickListener(View.OnClickListener {
             it.findNavController().navigate(R.id.nav_platosAddUpdateFragment, bundle)
-        })
-
-        holder.btnDetalle.setOnClickListener(View.OnClickListener {
-            it.findNavController().navigate(R.id.nav_platosDetalleFragment, bundle)
-        })
+        })*/
     }
 
     class CardPlatoHolder(v: View) : RecyclerView.ViewHolder(v) {
         var plato: Plato? = null
-        var txtNombre: TextView = v.findViewById(R.id.txtNombre_Plato)
-        var btnEditar: Button = v.findViewById(R.id.btnEditar_Plato)
-        var btnDetalle: Button = v.findViewById(R.id.btnDetalle_Plato)
-        var clay: ConstraintLayout = v.findViewById(R.id.clay_Plato)
+        var txtNombre: TextView = v.findViewById(R.id.txtNombrePreparacion_PlatoDetalle)
+        var edtCantidad: EditText = v.findViewById(R.id.edtCantidadPrepacion_PlatoDetalle)
+        var txtUnidad: TextView = v.findViewById(R.id.txtUnidadPreparacion_PlatoDetalle)
+        var btnQuitar: Button = v.findViewById(R.id.btnQuitar_PlatoDetalle)
+        var lay: LinearLayout = v.findViewById(R.id.lay_plato_detalle)
 
         fun setDataCard(plato: Plato?) {
             this.plato = plato
-            txtNombre.text = plato?.idPlato.toString() + " " + plato?.nombre
+            txtNombre.text = plato?.nombre
         }
 
     }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PerfilCreateActivity">
+    tools:context=".PerfilAddActivity">
 
     <TextView
         android:id="@+id/textView13"
@@ -40,6 +40,7 @@
         android:layout_height="48dp"
         android:layout_marginTop="70dp"
         android:text="AGREGAR PERFIL"
+        app:cornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="@+id/edtNombre_PerfilCreate"
         app:layout_constraintStart_toStartOf="@+id/edtNombre_PerfilCreate"
         app:layout_constraintTop_toBottomOf="@+id/edtNombre_PerfilCreate" />

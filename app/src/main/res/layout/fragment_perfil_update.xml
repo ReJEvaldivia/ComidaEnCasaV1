@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.perfil.PerfilAddUpdateFragment">
+    tools:context=".ui.perfil.PerfilUpdateFragment">
 
     <TextView
         android:id="@+id/textView30"
@@ -39,6 +39,7 @@
         android:layout_height="48dp"
         android:layout_marginTop="40dp"
         android:text="EDITAR PERFIL"
+        app:cornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtNombre_PerfilAU" />
@@ -49,6 +50,7 @@
         android:layout_height="48dp"
         android:layout_marginTop="30dp"
         android:text="ELIMINAR PERFIL"
+        app:cornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"

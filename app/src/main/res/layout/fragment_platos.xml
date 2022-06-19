@@ -8,9 +8,14 @@ tools:context=".ui.platos.PlatosFragment">
 
     <EditText
         android:id="@+id/edtBuscar_Plato"
-        android:layout_width="250dp"
+        android:layout_width="0dp"
         android:layout_height="48dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/barra_busqueda_personalizada"
+        android:drawableEnd="@drawable/ic_buscar"
+        android:paddingHorizontal="20dp"
         android:ems="10"
         android:hint="Buscar..."
         android:inputType="textPersonName"
@@ -38,6 +43,7 @@ tools:context=".ui.platos.PlatosFragment">
         android:layout_marginTop="50dp"
         android:layout_marginBottom="50dp"
         android:text="NUEVO PLATO"
+        app:cornerRadius="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

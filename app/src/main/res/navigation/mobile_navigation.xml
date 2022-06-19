@@ -24,6 +24,12 @@
     </fragment>
 
     <fragment
+        android:id="@+id/nav_platosDetalleFragment"
+        android:name="com.utp.comidaencasav1.ui.platos.PlatosDetalleFragment"
+        android:label="@string/menu_platos"
+        tools:layout="@layout/fragment_platos_detalle" />
+
+    <fragment
         android:id="@+id/nav_lista"
         android:name="com.utp.comidaencasav1.ui.lista.ListaFragment"
         android:label="@string/menu_lista"
@@ -36,30 +42,49 @@
         tools:layout="@layout/fragment_insumos" />
 
     <fragment
+        android:id="@+id/nav_insumosAddUpdateFragment"
+        android:name="com.utp.comidaencasav1.ui.insumos.InsumosAddUpdateFragment"
+        android:label="@string/menu_insumos"
+        tools:layout="@layout/fragment_insumos_add_update" />
+
+    <fragment
         android:id="@+id/nav_cuentaAddUpdate"
-        android:name="com.utp.comidaencasav1.ui.cuenta.CuentaAddUpdateFragment"
+        android:name="com.utp.comidaencasav1.ui.cuenta.CuentaUpdateFragment"
         android:label="@string/menu_cuenta"
-        tools:layout="@layout/fragment_cuenta_add_update" />
+        tools:layout="@layout/fragment_cuenta_update" />
 
     <fragment
         android:id="@+id/nav_perfilAddUpdate"
-        android:name="com.utp.comidaencasav1.ui.perfil.PerfilAddUpdateFragment"
+        android:name="com.utp.comidaencasav1.ui.perfil.PerfilUpdateFragment"
         android:label="@string/menu_perfil"
-        tools:layout="@layout/fragment_perfil_add_update" />
+        tools:layout="@layout/fragment_perfil_update" />
+    
     <fragment
         android:id="@+id/nav_categoria"
         android:name="com.utp.comidaencasav1.ui.categoria.CategoriaFragment"
         android:label="@string/menu_categoria"
         tools:layout="@layout/fragment_categoria" />
+
     <fragment
         android:id="@+id/nav_votacion"
         android:name="com.utp.comidaencasav1.ui.votacion.VotacionFragment"
         android:label="@string/menu_votacion"
         tools:layout="@layout/fragment_votacion" />
+
     <fragment
-        android:id="@+id/nav_insumosAddUpdateFragment"
-        android:name="com.utp.comidaencasav1.ui.insumos.InsumosAddUpdateFragment"
-        android:label="@string/menu_insumos"
-        tools:layout="@layout/fragment_insumos_add_update" />
+        android:id="@+id/nav_platoDia"
+        android:name="com.utp.comidaencasav1.ui.platodia.PlatoDiaFragment"
+        android:label="@string/menu_plato_dia"
+        tools:layout="@layout/fragment_plato_dia" />
+    <fragment
+        android:id="@+id/nav_reporte"
+        android:name="com.utp.comidaencasav1.ui.reporte.ReporteFragment"
+        android:label="@string/menu_reporte"
+        tools:layout="@layout/fragment_reporte" />
+    <fragment
+        android:id="@+id/nav_calendario"
+        android:name="com.utp.comidaencasav1.ui.calendario.CalendarioFragment"
+        android:label="@string/menu_calendario"
+        tools:layout="@layout/fragment_calendario" />
 
 </navigation>

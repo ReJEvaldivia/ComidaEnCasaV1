@@ -9,17 +9,17 @@ import android.widget.EditText
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.toObjects
-import com.utp.comidaencasav1.databinding.ActivityPerfilCreateBinding
+import com.utp.comidaencasav1.databinding.ActivityPerfilAddBinding
 import com.utp.comidaencasav1.model.models.Cuenta
 import com.utp.comidaencasav1.model.models.Usuario
 
-class PerfilCreateActivity : AppCompatActivity() {
+class PerfilAddActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityPerfilCreateBinding
+    private lateinit var binding: ActivityPerfilAddBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityPerfilCreateBinding.inflate(layoutInflater)
+        binding = ActivityPerfilAddBinding.inflate(layoutInflater)
         val root: View = binding.root
         setContentView(root)
 

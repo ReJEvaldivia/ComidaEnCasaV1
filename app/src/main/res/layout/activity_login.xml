@@ -74,6 +74,7 @@
         android:layout_height="48dp"
         android:layout_marginTop="30dp"
         android:text="INICIAR SESIÓN"
+        app:cornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtConstrasena_Login" />
@@ -84,6 +85,7 @@
         android:layout_height="48dp"
         android:layout_marginTop="20dp"
         android:text="REGISTRARSE"
+        app:cornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="@+id/btnIniciaSesion_Login"
         app:layout_constraintStart_toStartOf="@+id/btnIniciaSesion_Login"
         app:layout_constraintTop_toBottomOf="@+id/btnIniciaSesion_Login" />

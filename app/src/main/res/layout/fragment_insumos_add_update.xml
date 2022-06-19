@@ -52,6 +52,7 @@
         android:layout_height="48dp"
         android:layout_marginTop="40dp"
         android:text="REGISTRAR INSUMO"
+        app:cornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spnUnidad_InsumoAU" />
@@ -62,6 +63,7 @@
         android:layout_height="48dp"
         android:layout_marginTop="40dp"
         android:text="EDITAR INSUMO"
+        app:cornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="@+id/btnRegistrar_InsumoAU"
         app:layout_constraintStart_toStartOf="@+id/btnRegistrar_InsumoAU"
         app:layout_constraintTop_toBottomOf="@+id/btnRegistrar_InsumoAU" />
@@ -72,6 +74,7 @@
         android:layout_height="48dp"
         android:layout_marginTop="40dp"
         android:text="ELIMINAR NSUMO"
+        app:cornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="@+id/btnEditar_InsumoAU"
         app:layout_constraintStart_toStartOf="@+id/btnEditar_InsumoAU"
         app:layout_constraintTop_toBottomOf="@+id/btnEditar_InsumoAU" />

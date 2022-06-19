@@ -60,6 +60,7 @@
                 android:backgroundTint="@color/white"
                 android:drawableTop="@drawable/ic_check_empate"
                 android:visibility="visible"
+                app:cornerRadius="15dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

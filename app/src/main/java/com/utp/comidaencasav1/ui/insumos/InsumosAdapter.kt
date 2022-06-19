@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.utp.comidaencasav1.R
 import com.utp.comidaencasav1.model.models.Plato
@@ -42,7 +41,7 @@ class InsumosAdapter(var platos: ArrayList<Plato>?, var resource: Int) :
         var edtCantidad: TextView = v.findViewById(R.id.edtCantidad_Insumo)
         var txtUnidad: TextView = v.findViewById(R.id.txtUnidad_Insumo)
         var btnEditar: Button = v.findViewById(R.id.btnEditar_Insumo)
-        var lay: LinearLayout = v.findViewById(R.id.lay_insumo)
+        var lay: LinearLayout = v.findViewById(R.id.lay_insumos)
 
         fun setDataCard(plato: Plato?) {
             this.plato = plato

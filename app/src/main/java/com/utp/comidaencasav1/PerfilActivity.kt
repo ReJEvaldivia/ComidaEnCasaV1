@@ -52,7 +52,7 @@ class PerfilActivity : AppCompatActivity() {
         }
 
         btnAgregar.setOnClickListener {
-            val it = Intent(root.context, PerfilCreateActivity::class.java)
+            val it = Intent(root.context, PerfilAddActivity::class.java)
             it.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             it.putExtra("ext_cuenta", cuenta)
             root.context.startActivity(it)
