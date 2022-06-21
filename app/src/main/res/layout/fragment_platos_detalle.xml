@@ -52,9 +52,12 @@
 
             <Spinner
                 android:id="@+id/spnCategoria_PlatoDetalle"
-                android:layout_width="155dp"
-                android:layout_height="30dp"
+                style="@android:style/Widget.Holo.Light.Spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:backgroundTint="@color/blue_1"
+                android:gravity="center"
+                android:popupBackground="@drawable/desplegable_personalizado"
                 app:layout_constraintBottom_toBottomOf="@+id/textView28"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/textView28"
@@ -223,7 +226,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="15dp"
                 android:background="@color/white_2"
                 android:ems="10"
                 android:gravity="start|top"

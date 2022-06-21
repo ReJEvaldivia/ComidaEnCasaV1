@@ -6,7 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.utp.comidaencasav1.R
@@ -74,12 +77,35 @@ class PlatosDetalleFragment: Fragment() , PlatoView {
                 R.layout.card_ingredientes_plato_detalle
             )//Llama al CardView y lo setea en el Adapter del ReciclerView
 
-
-            /*spCategoria!!.adapter =ArrayAdapter.createFromResource(
+            //Creamos la lista de nombre platos
+            var listPlatoNombre = ArrayList<String>()
+            for (i in platos!!) {
+                listPlatoNombre.add(i.nombre)
+            }
+            //Seteamos la lista de nombres de platos en el spinner
+            spCategoria!!.adapter = ArrayAdapter<String>(
                 binding.spnCategoriaPlatoDetalle!!.context,
-                platos,
-                android.R.layout.simple_list_item_1
-            )*/
+                android.R.layout.simple_list_item_1,
+                listPlatoNombre
+            )
+
+            //Al seleccionar un item recuperamos el idPlato
+            spCategoria!!.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    adapterView: AdapterView<*>?,
+                    view: View,
+                    i: Int,
+                    l: Long
+                ) {
+                    Toast.makeText(
+                        binding.spnCategoriaPlatoDetalle!!.context,
+                        "Cliked Id :" + platos.get(i).idPlato,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+                override fun onNothingSelected(adapterView: AdapterView<*>?) {}
+            })
 
         } catch (e: Exception) {
             e.printStackTrace()

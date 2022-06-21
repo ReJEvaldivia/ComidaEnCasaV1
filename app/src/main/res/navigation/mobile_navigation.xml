@@ -19,7 +19,7 @@
         tools:layout="@layout/fragment_platos_add_update">
         <argument
             android:name="arg_item"
-            app:argType="com.utp.comidaencasav1.model.models.Plato"
+            app:argType="com.utp.comidaencasav1.model.Plato"
             android:defaultValue="@null" />
     </fragment>
 

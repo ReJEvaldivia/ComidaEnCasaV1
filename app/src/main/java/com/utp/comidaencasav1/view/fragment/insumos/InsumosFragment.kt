@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.utp.comidaencasav1.R
@@ -44,6 +45,10 @@ class InsumosFragment : Fragment() , PlatoView {
         rvInsumos?.layoutManager = LinearLayoutManager(this.context)
 
         getPlatos(3)
+
+        _binding!!.btnNuevoInsumo.setOnClickListener {
+            root.findNavController().navigate(R.id.nav_insumosAddUpdateFragment)
+        }
 
         //val nav = Navigation.createNavigateOnClickListener(R.id.nav_platosAddUpdateFragment)
 

@@ -81,10 +81,13 @@
 
     <Spinner
         android:id="@+id/spnUnidad_InsumoAU"
-        android:layout_width="200dp"
-        android:layout_height="40dp"
+        style="@android:style/Widget.Holo.Light.Spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:backgroundTint="@color/blue_1"
         android:gravity="center"
+        android:popupBackground="@drawable/desplegable_personalizado"
         android:textAlignment="center"
         app:layout_constraintStart_toStartOf="@+id/textView17"
         app:layout_constraintTop_toBottomOf="@+id/textView17" />

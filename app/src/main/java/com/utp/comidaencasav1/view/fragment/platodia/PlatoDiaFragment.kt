@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.utp.comidaencasav1.R
@@ -20,8 +21,6 @@ import com.utp.comidaencasav1.view.interfaces.PlatoView
 class PlatoDiaFragment: Fragment() , PlatoView {
 
     private var _binding: FragmentPlatoDiaBinding? = null
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     private var platoPresenter: PlatoPresenter? = null
@@ -45,6 +44,9 @@ class PlatoDiaFragment: Fragment() , PlatoView {
         rvIngredientes?.layoutManager = LinearLayoutManager(this.context)
 
         getPlatos(3)
+        _binding!!.btnDetallePlatoDia.setOnClickListener {
+            root.findNavController().navigate(R.id.nav_insumosAddUpdateFragment)
+        }
 
         //val nav = Navigation.createNavigateOnClickListener(R.id.nav_platosAddUpdateFragment)
 
