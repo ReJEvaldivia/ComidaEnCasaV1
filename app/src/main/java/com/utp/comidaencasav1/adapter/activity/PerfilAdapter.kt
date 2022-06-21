@@ -20,6 +20,7 @@ class PerfilAdapter(var usuarios: List<Usuario>?, var resource: Int) :
         var usuario = usuarios?.get(position)
         holder.bind(usuario)
         holder.clay.setOnClickListener {
+            //Enviar extra a otro activity
             val it = Intent(holder.root.context, MainActivity::class.java)
             it.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             it.putExtra("ext_usuario", usuario)

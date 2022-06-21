@@ -32,17 +32,19 @@ class MainActivity : AppCompatActivity() {
                 .setAction("Action", null).show()
         }
 
-        //Recuperar el item
-        /*val bundle = intent.extras!!
-        val ext_usuario = bundle.get("ext_usuario")
-        val usuario = ext_usuario as Usuario
-
-        val bundle2 = bundleOf("arg_usuario" to usuario)*/
-        //it.findNavController().navigate(R.id.nav_platosAddUpdateFragment, bundle)//pendiente el envío de argumentos
-
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_main)
+
+        /*
+        //Recuperar el extra
+        val bundleExt = intent.extras!!
+        val ext_usuario = bundleExt.get("ext_usuario")
+        val usuario = ext_usuario as Usuario
+        val bundleArg = bundleOf("arg_usuario" to usuario)
+        //Enviar extra a los fragments
+        navController.navigate(R.id.nav_platos, bundleArg)*/
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(

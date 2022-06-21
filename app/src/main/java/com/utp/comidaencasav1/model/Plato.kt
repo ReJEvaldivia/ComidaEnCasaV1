@@ -6,7 +6,6 @@ import java.util.*
 class Plato(
     var idDocumento: String = "",
     var idPlato: Int = 0,
-    var idCuenta: Int = 0,
     var idUsuarioCreador: Int = 0,
     var nombre: String = "",
     var preparacion: String = "",

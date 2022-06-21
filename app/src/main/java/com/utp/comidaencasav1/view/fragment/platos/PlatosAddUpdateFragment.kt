@@ -18,6 +18,7 @@ import com.google.firebase.firestore.ktx.toObjects
 import com.utp.comidaencasav1.R
 import com.utp.comidaencasav1.databinding.FragmentPlatosAddUpdateBinding
 import com.utp.comidaencasav1.model.Plato
+import com.utp.comidaencasav1.model.Usuario
 
 class PlatosAddUpdateFragment : Fragment() {
 
@@ -30,6 +31,8 @@ class PlatosAddUpdateFragment : Fragment() {
     ): View? {
         _binding = FragmentPlatosAddUpdateBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        //Recuperar el usuario
+        val usuario = requireActivity().intent.extras!!.get("ext_usuario") as Usuario
 
         var idDocumento: String = ""
         var edtNombre: EditText = binding.edtNombrePlatoAU
@@ -61,8 +64,7 @@ class PlatosAddUpdateFragment : Fragment() {
         btnRegistrar.setOnClickListener {
             var plato: Plato = Plato()
             plato.idDocumento = idDocumento
-            plato.idCuenta = 1
-            plato.idUsuarioCreador = 3
+            plato.idUsuarioCreador = usuario.idUsuario
             plato.nombre = edtNombre.text.toString()
             plato.estadoVisibilidad = chkEstadoVisibilidad.isChecked
 
