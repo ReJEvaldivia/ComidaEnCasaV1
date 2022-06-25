@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -31,15 +32,13 @@ class PlatosFragment : Fragment(), PlatoView {
 
     private var platoPresenter: PlatoPresenter? = null
     private var rvPlatos: RecyclerView? = null
+    private var svBuscar: SearchView? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val platosViewModel =
-            ViewModelProvider(this).get(PlatosViewModel::class.java)
-
         _binding = FragmentPlatosBinding.inflate(inflater, container, false)
         val root: View = binding.root
         //Recuperar el usuario
@@ -77,12 +76,15 @@ class PlatosFragment : Fragment(), PlatoView {
         //VIEW
         rvPlatos = binding.rcvPlatosPlato//UI
         rvPlatos?.layoutManager = LinearLayoutManager(this.context)
+        svBuscar = binding.svBusquedaPlatos
 
         getPlatos(usuario.idUsuario)
 
         _binding!!.btnNuevoPlato.setOnClickListener {
             root.findNavController().navigate(R.id.nav_platosAddUpdateFragment)
         }
+        //svBuscar!!.setOnQueryTextListener(this)
+
 
         return root
     }
@@ -107,5 +109,6 @@ class PlatosFragment : Fragment(), PlatoView {
     override fun getPlatos(idUsuarioCreador: Int) {
         platoPresenter?.getPlatos(idUsuarioCreador)
     }
+
 
 }
