@@ -10,11 +10,27 @@ class PlatoPresenterImpl (var platoView: PlatoView): PlatoPresenter {
 
     private var platoInteractor: PlatosInteractor = PlatosInteractorImpl(this)
 
-    override fun showPlatos(platos: ArrayList<Plato>?) {
+    override fun showPlatos(platos: ArrayList<Plato>) {
         platoView.showPlatos(platos)
+    }
+
+    override fun navigateNavPlatos() {
+        platoView.navigateNavPlatos()
     }
 
     override fun getPlatos(idUsuarioCreador: Int) {
         platoInteractor.getPlatosFirebase(idUsuarioCreador)
+    }
+
+    override fun setPlato(plato: Plato) {
+        platoInteractor.setPlatoFirebase(plato)
+    }
+
+    override fun updatePlato(plato: Plato) {
+        platoInteractor.updatePlatoFirebase(plato)
+    }
+
+    override fun deletePlato(idDocumento: String) {
+        platoInteractor.deletePlatoFirebase(idDocumento)
     }
 }

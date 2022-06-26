@@ -58,7 +58,6 @@ class PlatosFragment : Fragment(), PlatoView {
         }
         //svBuscar!!.setOnQueryTextListener(this)
 
-
         return root
     }
 
@@ -67,7 +66,7 @@ class PlatosFragment : Fragment(), PlatoView {
         _binding = null
     }
 
-    override fun showPlatos(platos: ArrayList<Plato>?) {
+    override fun showPlatos(platos: ArrayList<Plato>) {
         try {
             rvPlatos!!.adapter = PlatosAdapter(
                 platos,
@@ -78,8 +77,24 @@ class PlatosFragment : Fragment(), PlatoView {
         }
     }
 
+    override fun navigateNavPlatos() {
+        TODO("Not yet implemented")
+    }
+
     override fun getPlatos(idUsuarioCreador: Int) {
         platoPresenter?.getPlatos(idUsuarioCreador)
+    }
+
+    override fun setPlato(plato: Plato) {
+        TODO("Not yet implemented")
+    }
+
+    override fun updatePlato(plato: Plato) {
+        TODO("Not yet implemented")
+    }
+
+    override fun deletePlato(idDocumento: String) {
+        TODO("Not yet implemented")
     }
 
     fun getUsuario(): Usuario {

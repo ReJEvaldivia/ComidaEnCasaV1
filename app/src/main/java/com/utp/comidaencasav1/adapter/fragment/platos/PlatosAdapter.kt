@@ -6,14 +6,14 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.utp.comidaencasav1.R
 import com.utp.comidaencasav1.databinding.CardPlatosBinding
+import com.utp.comidaencasav1.helper.ArgumentoHelper
 import com.utp.comidaencasav1.model.Plato
 
-class PlatosAdapter(var platos: ArrayList<Plato>?, var resource: Int) :
+class PlatosAdapter(var platos: ArrayList<Plato>, var resource: Int) :
     RecyclerView.Adapter<PlatosAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): ViewHolder {
@@ -22,11 +22,11 @@ class PlatosAdapter(var platos: ArrayList<Plato>?, var resource: Int) :
     }
 
     override fun getItemCount(): Int {
-        return platos?.size ?: 0
+        return platos.size ?: 0
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        var plato = platos?.get(position)
+        var plato = platos.get(position)
         holder.bind(plato)
     }
 
@@ -41,7 +41,7 @@ class PlatosAdapter(var platos: ArrayList<Plato>?, var resource: Int) :
 
         fun bind(plato: Plato?) {
             //Enviar argumentos a otro fragment
-            val bundle = bundleOf("arg_plato" to plato)
+            val bundle = ArgumentoHelper().setArgPlato(plato)
             this.plato = plato
             txtNombre.text = plato?.idPlato.toString() + " " + plato?.nombre
 

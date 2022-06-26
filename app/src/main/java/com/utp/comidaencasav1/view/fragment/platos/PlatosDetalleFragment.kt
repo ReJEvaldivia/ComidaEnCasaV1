@@ -67,7 +67,7 @@ class PlatosDetalleFragment: Fragment() , PlatoView {
     }
 
 
-    override fun showPlatos(platos: ArrayList<Plato>?) {
+    override fun showPlatos(platos: ArrayList<Plato>) {
         try {
             rvIngredientes!!.adapter = PlatosDetalleAdapter(
                 platos,
@@ -109,8 +109,24 @@ class PlatosDetalleFragment: Fragment() , PlatoView {
         }
     }
 
+    override fun navigateNavPlatos() {
+        TODO("Not yet implemented")
+    }
+
     override fun getPlatos(idUsuarioCreador: Int) {
         platoPresenter?.getPlatos(idUsuarioCreador)
+    }
+
+    override fun setPlato(plato: Plato) {
+        TODO("Not yet implemented")
+    }
+
+    override fun updatePlato(plato: Plato) {
+        TODO("Not yet implemented")
+    }
+
+    override fun deletePlato(idDocumento: String) {
+        TODO("Not yet implemented")
     }
 
 }
