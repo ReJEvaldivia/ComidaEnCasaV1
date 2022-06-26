@@ -10,20 +10,21 @@ import android.widget.CheckBox
 import android.widget.EditText
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.toObjects
 import com.utp.comidaencasav1.R
 import com.utp.comidaencasav1.databinding.FragmentPlatosAddUpdateBinding
+import com.utp.comidaencasav1.helper.ExtraHelper
 import com.utp.comidaencasav1.model.Plato
-import com.utp.comidaencasav1.model.Usuario
 
 class PlatosAddUpdateFragment : Fragment() {
 
     private var _binding: FragmentPlatosAddUpdateBinding? = null
     private val binding get() = _binding!!
+
+    private var extraHelper: ExtraHelper = ExtraHelper()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,7 +33,7 @@ class PlatosAddUpdateFragment : Fragment() {
         _binding = FragmentPlatosAddUpdateBinding.inflate(inflater, container, false)
         val root: View = binding.root
         //Recuperar el usuario
-        val usuario = requireActivity().intent.extras!!.get("ext_usuario") as Usuario
+        val usuario = extraHelper.getUsuario(requireActivity())
 
         var idDocumento: String = ""
         var edtNombre: EditText = binding.edtNombrePlatoAU
@@ -71,6 +72,7 @@ class PlatosAddUpdateFragment : Fragment() {
             //INSERT
             platoRef.orderBy("idPlato", Query.Direction.DESCENDING).limit(1).get()
                 .addOnSuccessListener { querySnapshot ->
+
                     val platos = ArrayList(querySnapshot.toObjects<Plato>())
                     var idCount: Int = 0
                     if (platos.size > 0) {
@@ -78,8 +80,11 @@ class PlatosAddUpdateFragment : Fragment() {
                             platos[0].idPlato//Recupera el último idPlato registrado en la BD
                     }
                     plato.idPlato = idCount + 1
+                    val newPlatoRef = platoRef.document()
+                    plato.idDocumento = newPlatoRef.id
 
-                    platoRef.add(plato)
+                    //platoRef.add(plato)
+                    newPlatoRef.set(plato)
                         .addOnSuccessListener {
                             root.findNavController()
                                 .navigate(R.id.nav_platos)//Navegar al Fragment platos
@@ -125,13 +130,4 @@ class PlatosAddUpdateFragment : Fragment() {
 
         return root
     }
-
-    private lateinit var viewModel: PlatosAddUpdateViewModel
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(PlatosAddUpdateViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
-
 }

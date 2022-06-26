@@ -36,9 +36,6 @@ class PlatosDetalleFragment: Fragment() , PlatoView {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val insumosViewModel =
-            ViewModelProvider(this).get(PlatosDetalleViewModel::class.java)
-
         _binding = FragmentPlatosDetalleBinding.inflate(inflater, container, false)
         val root: View = binding.root
 

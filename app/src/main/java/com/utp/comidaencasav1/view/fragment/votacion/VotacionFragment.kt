@@ -1,6 +1,5 @@
 package com.utp.comidaencasav1.view.fragment.votacion
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -15,7 +14,6 @@ import com.utp.comidaencasav1.databinding.FragmentVotacionBinding
 import com.utp.comidaencasav1.model.Plato
 import com.utp.comidaencasav1.presenter.interfaces.PlatoPresenter
 import com.utp.comidaencasav1.presenter.implement.PlatoPresenterImpl
-import com.utp.comidaencasav1.view.fragment.platos.PlatosViewModel
 import com.utp.comidaencasav1.view.interfaces.PlatoView
 
 class VotacionFragment : Fragment(), PlatoView {
@@ -34,9 +32,6 @@ class VotacionFragment : Fragment(), PlatoView {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val platosViewModel =
-            ViewModelProvider(this).get(PlatosViewModel::class.java)
-
         _binding = FragmentVotacionBinding.inflate(inflater, container, false)
         val root: View = binding.root
 

@@ -41,36 +41,9 @@ class PlatosFragment : Fragment(), PlatoView {
     ): View {
         _binding = FragmentPlatosBinding.inflate(inflater, container, false)
         val root: View = binding.root
-        //Recuperar el usuario
-        //val usuario = requireActivity().intent.extras!!.get("ext_usuario") as Usuario
-        //Recuperar el extra
-        val bundleExt = requireActivity().intent.extras
-        var usuario = Usuario()
-        if (bundleExt != null) {
-            //Recuperar el usuario
-            val ext_usuario = bundleExt!!.get("ext_usuario")
-            usuario = ext_usuario as Usuario
-            //Listar los platos del usuario
-        } else {
-            //Esto se hace para inciar desde el Main con el usuario por defecto en la BD Firebase
-            //Crear una instancia de Firebase
-            val db = FirebaseFirestore.getInstance()
-            val usuarioRef = db.collection("Usuario")
-            //Recupera con filtros
-            usuarioRef.whereEqualTo("idCuenta", 1).orderBy("idRol")
-                .orderBy("idUsuario", Query.Direction.ASCENDING).limit(1)
-                .get()
-                .addOnSuccessListener { querySnapshot ->
-                    val usuarios = querySnapshot.toObjects<Usuario>()
-                    usuario = usuarios.first()
-                    //Enviar extra a otro activity
-                    val it = Intent(root.context, MainActivity::class.java)
-                    it.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                    it.putExtra("ext_usuario", usuario)
-                    root.context.startActivity(it)
-                }
-        }
+        var usuario = getUsuario()
 
+        //Instancia con el presentador
         platoPresenter = PlatoPresenterImpl(this)
 
         //VIEW
@@ -94,7 +67,6 @@ class PlatosFragment : Fragment(), PlatoView {
         _binding = null
     }
 
-
     override fun showPlatos(platos: ArrayList<Plato>?) {
         try {
             rvPlatos!!.adapter = PlatosAdapter(
@@ -108,6 +80,39 @@ class PlatosFragment : Fragment(), PlatoView {
 
     override fun getPlatos(idUsuarioCreador: Int) {
         platoPresenter?.getPlatos(idUsuarioCreador)
+    }
+
+    fun getUsuario(): Usuario {
+        //Recuperar el usuario
+        //val usuario = requireActivity().intent.extras!!.get("ext_usuario") as Usuario
+        //Recuperar el extra
+        val bundleExt = requireActivity().intent.extras
+        var usuario = Usuario()
+        if (bundleExt != null) {
+            //Recuperar el usuario
+            val ext_usuario = bundleExt!!.get("ext_usuario")
+            usuario = ext_usuario as Usuario
+            //Listar los platos del usuario
+        } else {
+            //Esto se hace para inciar desde el Main con el usuario por defecto en la BD Firebase
+            //Crear una instancia de Firebase
+            val db = FirebaseFirestore.getInstance()
+            val usuarioRef = db.collection("Usuario")
+            //Recupera con filtros
+            usuarioRef.whereEqualTo("idCuenta", 1).orderBy("idRol")
+                .orderBy("idUsuario", Query.Direction.ASCENDING).limit(1)
+                .get()
+                .addOnSuccessListener { querySnapshot ->
+                    val usuarios = querySnapshot.toObjects<Usuario>()
+                    usuario = usuarios.first()
+                    //Enviar extra a otro activity
+                    val it = Intent(context, MainActivity::class.java)
+                    it.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                    it.putExtra("ext_usuario", usuario)
+                    context?.startActivity(it)
+                }
+        }
+        return usuario
     }
 
 
