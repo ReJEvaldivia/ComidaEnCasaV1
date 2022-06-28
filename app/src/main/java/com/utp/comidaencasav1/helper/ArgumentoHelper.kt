@@ -8,7 +8,7 @@ import java.io.Serializable
 
 class ArgumentoHelper {
     fun setArgPlato(plato: Plato?): Bundle {
-        //Enviar argumentos a otro fragment
+        //Declarar argumentos a otro fragment
         return bundleOf("arg_plato" to plato)
     }
 

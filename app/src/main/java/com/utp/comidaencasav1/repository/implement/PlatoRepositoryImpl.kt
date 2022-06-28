@@ -1,25 +1,15 @@
 package com.utp.comidaencasav1.repository.implement
 
-import android.util.Log
-import androidx.navigation.findNavController
 import com.google.firebase.firestore.Query
-import com.google.firebase.firestore.ktx.toObjects
-import com.utp.comidaencasav1.R
-import com.utp.comidaencasav1.helper.ExtraHelper
-import com.utp.comidaencasav1.helper.OperacionesHelper
+import com.utp.comidaencasav1.helper.ConstanteHelper
 import com.utp.comidaencasav1.model.Plato
 import com.utp.comidaencasav1.presenter.interfaces.PlatoPresenter
 import com.utp.comidaencasav1.repository.interfaces.PlatoRepository
 import com.utp.comidaencasav1.repository.network.FirestoreService
 
-const val PLATO_COLLECTION_NAME = "Plato"
-const val CUENTA_COLLECTION_NAME = "Cuenta"
-const val USUARIO_COLLECTION_NAME = "Usuario"
-
 class PlatoRepositoryImpl(var platoPresenter: PlatoPresenter) : PlatoRepository {
-    val firestoreService = FirestoreService<Plato>()
-    val platoRef = firestoreService.getCollectionRef(PLATO_COLLECTION_NAME)
-    private var operacionesHelper: OperacionesHelper = OperacionesHelper()
+    private val firestoreService = FirestoreService<Plato>()
+    private val platoRef = firestoreService.getCollectionRef(ConstanteHelper.COLLECTION_NAME_PLATO)
 
     override fun getPlatosFirebase(idUsuarioCreador: Int) {
         //Recupera con filtros
@@ -38,13 +28,14 @@ class PlatoRepositoryImpl(var platoPresenter: PlatoPresenter) : PlatoRepository 
             .addOnSuccessListener { querySnapshot ->
                 var platos = firestoreService.getArrayListModel(querySnapshot, Plato::class.java)
                 plato.idPlato = if (platos.size > 0) platos[0].idPlato + 1 else 1
+
                 val newPlatoRef = platoRef.document()
-                plato.idDocumento = newPlatoRef.id
+                plato.idDocumento = newPlatoRef.id//Asignar el idDocumento
 
                 //platoRef.add(plato)
                 newPlatoRef.set(plato)
                     .addOnSuccessListener {
-                    platoPresenter.navigateNavPlatos()
+                        platoPresenter.navigateNavPlatos()
                     }
                 //.addOnFailureListener { e -> Log.d("Firebase Message","Error writing document",e) }
             }

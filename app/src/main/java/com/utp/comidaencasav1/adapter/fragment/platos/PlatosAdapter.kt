@@ -16,7 +16,7 @@ import com.utp.comidaencasav1.model.Plato
 class PlatosAdapter(var platos: ArrayList<Plato>, var resource: Int) :
     RecyclerView.Adapter<PlatosAdapter.ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, p1: Int): ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, position: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         return ViewHolder(layoutInflater.inflate(R.layout.card_platos, parent, false))
     }
