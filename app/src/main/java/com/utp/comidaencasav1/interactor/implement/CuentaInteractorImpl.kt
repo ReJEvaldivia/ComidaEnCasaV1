@@ -13,10 +13,10 @@ class CuentaInteractorImpl(var cuentaPresenter: CuentaPresenter): CuentaInteract
         cuentaRepository.getCuentaFirebase(cuenta)
     }
 
-    /*override fun setCuentaFirebase(cuenta: Cuenta) {
+    override fun setCuentaFirebase(cuenta: Cuenta) {
         cuentaRepository.setCuentaFirebase(cuenta)
     }
-
+/*
     override fun updateCuentaFirebase(cuenta: Cuenta) {
         cuentaRepository.updateCuentaFirebase(cuenta)
     }

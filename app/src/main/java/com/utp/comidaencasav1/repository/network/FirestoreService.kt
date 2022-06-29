@@ -19,7 +19,6 @@ class FirestoreService<T>() {
         return ArrayList(querySnapshot.toObjects(clazz))
     }
 
-
     /*
      //Recupera 1 documento
      platoRef.document("FjvPTqZZw54xYCzBvdgk").get().addOnSuccessListener { documentSnapshot ->

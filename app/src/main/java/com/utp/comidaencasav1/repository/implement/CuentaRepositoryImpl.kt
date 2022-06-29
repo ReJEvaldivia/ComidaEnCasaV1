@@ -1,5 +1,6 @@
 package com.utp.comidaencasav1.repository.implement
 
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.toObject
 import com.utp.comidaencasav1.helper.ConstanteHelper
 import com.utp.comidaencasav1.model.Cuenta
@@ -30,7 +31,7 @@ class CuentaRepositoryImpl(var cuentaPresenter: CuentaPresenter) : CuentaReposit
                 }
             }
     }
-/*
+
     override fun setCuentaFirebase(cuenta: Cuenta) {
         cuentaRef.orderBy("idCuenta", Query.Direction.DESCENDING).limit(1)
             .get()//Recupera el último idCuenta registrado en la BD
@@ -43,15 +44,11 @@ class CuentaRepositoryImpl(var cuentaPresenter: CuentaPresenter) : CuentaReposit
 
                 newCuentaRef.set(cuenta)
                     .addOnSuccessListener {
-                        cuentaPresenter.navigateNavCuentas()
+                        cuentaPresenter.navigateLoginActivity()
                     }
             }
-
-
-
-
     }
-
+/*
     override fun updateCuentaFirebase(cuenta: Cuenta) {
         cuentaRef.document(cuenta.idDocumento)
             .update(

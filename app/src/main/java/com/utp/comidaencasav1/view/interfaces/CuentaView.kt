@@ -3,13 +3,13 @@ package com.utp.comidaencasav1.view.interfaces
 import com.utp.comidaencasav1.model.Cuenta
 
 interface CuentaView {
-    //Vista
+    //Métodos Libres:
     fun validateInicioSesion(cuenta: Cuenta?)
 
-    //Navegar al Fragment cuentas
+    //Navegación:
     fun navigateLoginActivity()
 
-    //Presentador
+    //CRUD:
     fun getCuenta(cuenta: Cuenta)
     fun setCuenta(cuenta: Cuenta)
     /*

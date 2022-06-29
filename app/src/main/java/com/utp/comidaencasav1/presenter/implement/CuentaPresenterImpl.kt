@@ -14,22 +14,22 @@ class CuentaPresenterImpl(var cuentaView: CuentaView) : CuentaPresenter {
         cuentaView.validateInicioSesion(cuenta)
     }
 
+    override fun navigateLoginActivity() {
+        cuentaView.navigateLoginActivity()
+    }
+
     override fun getCuenta(cuenta: Cuenta) {
         cuentaInteractor.getCuentaFirebase(cuenta)
-    }
-
-    /*
-    override fun showCuentaLogin(cuentas: ArrayList<Cuenta>) {
-        cuentaView.showCuentas(cuentas)
-    }
-
-    override fun navigateNavCuentas() {
-        cuentaView.navigateNavCuentas()
     }
 
     override fun setCuenta(cuenta: Cuenta) {
         cuentaInteractor.setCuentaFirebase(cuenta)
     }
+    /*
+    override fun showCuentaLogin(cuentas: ArrayList<Cuenta>) {
+        cuentaView.showCuentas(cuentas)
+    }
+
 
     override fun updateCuenta(cuenta: Cuenta) {
         cuentaInteractor.updateCuentaFirebase(cuenta)
