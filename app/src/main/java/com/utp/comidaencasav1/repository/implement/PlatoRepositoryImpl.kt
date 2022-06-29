@@ -12,7 +12,6 @@ class PlatoRepositoryImpl(var platoPresenter: PlatoPresenter) : PlatoRepository 
     private val platoRef = firestoreService.getCollectionRef(ConstanteHelper.COLLECTION_NAME_PLATO)
 
     override fun getPlatosFirebase(idUsuarioCreador: Int) {
-        //Recupera con filtros
         platoRef.whereEqualTo("idUsuarioCreador", idUsuarioCreador).orderBy("nombre")
             .get()
             .addOnSuccessListener { querySnapshot ->
@@ -22,7 +21,6 @@ class PlatoRepositoryImpl(var platoPresenter: PlatoPresenter) : PlatoRepository 
     }
 
     override fun setPlatoFirebase(plato: Plato) {
-        //INSERT
         platoRef.orderBy("idPlato", Query.Direction.DESCENDING).limit(1)
             .get()//Recupera el último idPlato registrado en la BD
             .addOnSuccessListener { querySnapshot ->
@@ -35,14 +33,13 @@ class PlatoRepositoryImpl(var platoPresenter: PlatoPresenter) : PlatoRepository 
                 //platoRef.add(plato)
                 newPlatoRef.set(plato)
                     .addOnSuccessListener {
-                        platoPresenter.navigateNavPlatos()
+                        platoPresenter.navigatePlatosFragment()
                     }
                 //.addOnFailureListener { e -> Log.d("Firebase Message","Error writing document",e) }
             }
     }
 
     override fun updatePlatoFirebase(plato: Plato) {
-        //UPDATE
         platoRef.document(plato.idDocumento)
             .update(
                 mapOf(
@@ -50,15 +47,14 @@ class PlatoRepositoryImpl(var platoPresenter: PlatoPresenter) : PlatoRepository 
                     "estadoVisibilidad" to plato.estadoVisibilidad
                 )
             ).addOnSuccessListener {
-                platoPresenter.navigateNavPlatos()
+                platoPresenter.navigatePlatosFragment()
             }
     }
 
     override fun deletePlatoFirebase(idDocumento: String) {
-        //DELETE
         platoRef.document(idDocumento)
             .delete().addOnSuccessListener {
-                platoPresenter.navigateNavPlatos()
+                platoPresenter.navigatePlatosFragment()
             }
     }
 }

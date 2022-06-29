@@ -1,23 +1,18 @@
 package com.utp.comidaencasav1.view.fragment.platos
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
-import com.google.firebase.firestore.ktx.toObjects
 import com.utp.comidaencasav1.R
 import com.utp.comidaencasav1.adapter.fragment.platos.PlatosAdapter
 import com.utp.comidaencasav1.databinding.FragmentPlatosBinding
-import com.utp.comidaencasav1.helper.ArgumentoHelper
 import com.utp.comidaencasav1.helper.ExtraHelper
 import com.utp.comidaencasav1.helper.OperacionHelper
 import com.utp.comidaencasav1.model.Plato
@@ -43,6 +38,7 @@ class PlatosFragment : Fragment(), PlatoView, UsuarioView {
     private var rvPlatos: RecyclerView? = null
     private var svBuscar: SearchView? = null
     private var usuario: Usuario? = null
+    private var btnNuevoPlato: Button? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -56,7 +52,7 @@ class PlatosFragment : Fragment(), PlatoView, UsuarioView {
 
         getPlatos(usuario!!.idUsuario)
 
-        _binding!!.btnNuevoPlato.setOnClickListener {
+        btnNuevoPlato!!.setOnClickListener {
             root.findNavController().navigate(R.id.nav_platosAddUpdateFragment)
         }
 
@@ -91,10 +87,11 @@ class PlatosFragment : Fragment(), PlatoView, UsuarioView {
         rvPlatos?.layoutManager = LinearLayoutManager(this.context)
         svBuscar = binding.svBusquedaPlatos
 
+        btnNuevoPlato = binding.btnNuevoPlato
         //svBuscar!!.setOnQueryTextListener(this)
     }
 
-    override fun navigateNavPlatos() {
+    override fun navigatePlatosFragment() {
         TODO("Not yet implemented")
     }
 
@@ -115,10 +112,8 @@ class PlatosFragment : Fragment(), PlatoView, UsuarioView {
     }
 
     fun getUsuario(): Usuario {
-        //Recuperar el usuario
-        //val usuario = requireActivity().intent.extras!!.get("ext_usuario") as Usuario
         //Recuperar el extra
-        val bundleExt =  operacionHelper!!.getBundle(requireActivity())
+        val bundleExt = operacionHelper!!.getBundle(requireActivity())
         var usuario = Usuario()
         if (bundleExt != null) {
             //Recuperar el usuario
@@ -131,38 +126,13 @@ class PlatosFragment : Fragment(), PlatoView, UsuarioView {
         return usuario
     }
 
-    override fun showUsuarios(usuarios: ArrayList<Usuario>) {
-        TODO("Not yet implemented")
-    }
-
     override fun showUsuarioDefault(usuario: Usuario) {
-        val it = extraHelper?.setExtUsuario(context, usuario)
+        val it = extraHelper?.setExtUsuario(context, usuario, MainActivity::class.java)
         context?.startActivity(it)
-    }
-
-    override fun navigateNavUsuarios() {
-        TODO("Not yet implemented")
-    }
-
-    override fun getUsuarios(idUsuarioCreador: Int) {
-        TODO("Not yet implemented")
     }
 
     override fun getUsuarioDefault() {
         usuarioPresenter?.getUsuarioDefault()
     }
-
-    override fun setUsuario(usuario: Usuario) {
-        TODO("Not yet implemented")
-    }
-
-    override fun updateUsuario(usuario: Usuario) {
-        TODO("Not yet implemented")
-    }
-
-    override fun deleteUsuario(idDocumento: String) {
-        TODO("Not yet implemented")
-    }
-
 
 }

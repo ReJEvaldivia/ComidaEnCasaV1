@@ -6,31 +6,34 @@ import com.utp.comidaencasav1.model.Usuario
 import com.utp.comidaencasav1.presenter.interfaces.UsuarioPresenter
 import com.utp.comidaencasav1.view.interfaces.UsuarioView
 
-class UsuarioPresenterImpl (var usuarioView: UsuarioView): UsuarioPresenter {
+class UsuarioPresenterImpl(var usuarioView: UsuarioView) : UsuarioPresenter {
 
     private var usuarioInteractor: UsuarioInteractor = UsuarioInteractorImpl(this)
-
-    override fun showUsuarios(usuarios: ArrayList<Usuario>) {
-        usuarioView.showUsuarios(usuarios)
-    }
 
     override fun showUsuarioDefault(usuario: Usuario) {
         usuarioView.showUsuarioDefault(usuario)
     }
 
+    override fun getUsuarioDefault() {
+        usuarioInteractor.getUsuarioDefaultFirebase()
+    }
+    /*override fun showUsuarios(usuarios: ArrayList<Usuario>) {
+        usuarioView.showUsuarios(usuarios)
+    }*/
+
+
+/*
     override fun navigateNavUsuarios() {
         usuarioView.navigateNavUsuarios()
     }
 
     override fun getUsuarios(idUsuarioCreador: Int) {
         usuarioInteractor.getUsuariosFirebase(idUsuarioCreador)
-    }
+    }*/
 
-    override fun getUsuarioDefault() {
-        usuarioInteractor.getUsuarioDefaultFirebase()
-    }
 
-    override fun setUsuario(usuario: Usuario) {
+
+    /*override fun setUsuario(usuario: Usuario) {
         usuarioInteractor.setUsuarioFirebase(usuario)
     }
 
@@ -40,5 +43,5 @@ class UsuarioPresenterImpl (var usuarioView: UsuarioView): UsuarioPresenter {
 
     override fun deleteUsuario(idDocumento: String) {
         usuarioInteractor.deleteUsuarioFirebase(idDocumento)
-    }
+    }*/
 }

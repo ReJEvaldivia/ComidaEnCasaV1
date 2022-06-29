@@ -7,14 +7,23 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.toObject
 import com.utp.comidaencasav1.databinding.ActivityLoginBinding
+import com.utp.comidaencasav1.helper.ExtraHelper
 import com.utp.comidaencasav1.model.Cuenta
+import com.utp.comidaencasav1.presenter.implement.CuentaPresenterImpl
+import com.utp.comidaencasav1.presenter.interfaces.CuentaPresenter
+import com.utp.comidaencasav1.view.interfaces.CuentaView
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity(), CuentaView {
 
     private lateinit var binding: ActivityLoginBinding
+
+    private var extraHelper: ExtraHelper? = null
+    private var cuentaPresenter: CuentaPresenter? = null
+    private var edtCorreo: EditText? = null
+    private var edtConstrasena: EditText? = null
+    private var btnIniciaSesion: Button? = null
+    private var btnRegistrarse: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,49 +31,61 @@ class LoginActivity : AppCompatActivity() {
         val root: View = binding.root
         setContentView(root)
 
-        var edtCorreo: EditText = binding.edtCorreoLogin
-        var edtConstrasena: EditText = binding.edtConstrasenaLogin
-        var btnIniciaSesion: Button = binding.btnIniciaSesionLogin
-        var btnRegistrarse: Button = binding.btnRegistrarseLogin
+        initialConfig()
 
-        //Crear una instancia de Firebase
-        val db = FirebaseFirestore.getInstance()
-        val cuentaRef = db.collection("Cuenta")
-
-        btnIniciaSesion.setOnClickListener {
-
-            val correo = edtCorreo.text.toString()
-            val contrasena = edtConstrasena.text.toString()
-
-            cuentaRef.whereEqualTo("correo", correo).whereEqualTo("contrasena", contrasena)
-                .orderBy("idCuenta").limit(1)
-                .get()
-                .addOnSuccessListener { querySnapshot ->
-                    //Si existe registro con usuario
-                    if (querySnapshot.size() > 0) {
-                        var cuenta: Cuenta = Cuenta()
-                        for (document in querySnapshot) {
-                            cuenta = document.toObject<Cuenta>()!!
-                            cuenta.idDocumento = document.id
-                            break
-                        }
-                        val it = Intent(root.context, PerfilActivity::class.java)
-                        it.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                        it.putExtra("ext_cuenta", cuenta)
-                        root.context.startActivity(it)
-                    } else {
-                        toast()
-                    }
-                }
+        btnIniciaSesion!!.setOnClickListener {
+            var cuenta: Cuenta = getComponents()
+            getCuenta(cuenta)
         }
 
-        btnRegistrarse.setOnClickListener {
+        btnRegistrarse!!.setOnClickListener {
             val it = Intent(root.context, CuentaAddActivity::class.java)
             root.context.startActivity(it)
         }
     }
 
+    private fun initialConfig() {
+        extraHelper = ExtraHelper()
+        cuentaPresenter = CuentaPresenterImpl(this)
+        edtCorreo = binding.edtCorreoLogin
+        edtConstrasena = binding.edtConstrasenaLogin
+        btnIniciaSesion = binding.btnIniciaSesionLogin
+        btnRegistrarse = binding.btnRegistrarseLogin
+    }
+
+    private fun getComponents(): Cuenta {
+        var cuenta: Cuenta = Cuenta()
+        cuenta.correo = edtCorreo!!.text.toString()
+        cuenta.contrasena = edtConstrasena!!.text.toString()
+        return cuenta
+    }
+
+    override fun validateInicioSesion(cuenta: Cuenta?) {
+        if (cuenta != null) {
+            navigatePerfilActivity(cuenta)
+        } else {
+            toast()
+        }
+    }
+
     private fun toast() {
         Toast.makeText(this, "Correo o contraseña incorrecta.", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun navigatePerfilActivity(cuenta: Cuenta) {
+        val it = extraHelper!!.setExtCuenta(this, cuenta, PerfilActivity::class.java)
+        this.startActivity(it)
+    }
+
+    override fun navigateLoginActivity() {
+        TODO("Not yet implemented")
+    }
+
+    override fun getCuenta(cuenta: Cuenta) {
+        cuentaPresenter!!.getCuenta(cuenta)
+    }
+
+    override fun setCuenta(cuenta: Cuenta) {
+        TODO("Not yet implemented")
     }
 }

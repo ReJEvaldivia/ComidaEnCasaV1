@@ -110,7 +110,7 @@ class PlatosAddUpdateFragment : Fragment(), PlatoView {
         TODO("Not yet implemented")
     }
 
-    override fun navigateNavPlatos() {
+    override fun navigatePlatosFragment() {
         binding.root.findNavController().navigate(R.id.nav_platos)
     }
 

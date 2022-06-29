@@ -9,15 +9,15 @@ import com.utp.comidaencasav1.repository.interfaces.UsuarioRepository
 class UsuarioInteractorImpl(var usuarioPresenter: UsuarioPresenter): UsuarioInteractor {
     private var usuarioRepository: UsuarioRepository = UsuarioRepositoryImpl(usuarioPresenter)
 
-    override fun getUsuariosFirebase(idUsuarioCreador: Int) {
-        usuarioRepository.getUsuariosFirebase(idUsuarioCreador)
-    }
-
     override fun getUsuarioDefaultFirebase() {
         usuarioRepository.getUsuarioDefaultFirebase()
     }
 
-    override fun setUsuarioFirebase(usuario: Usuario) {
+    /*override fun getUsuariosFirebase(idUsuarioCreador: Int) {
+        usuarioRepository.getUsuariosFirebase(idUsuarioCreador)
+    }*/
+
+    /*override fun setUsuarioFirebase(usuario: Usuario) {
         usuarioRepository.setUsuarioFirebase(usuario)
     }
 
@@ -27,6 +27,6 @@ class UsuarioInteractorImpl(var usuarioPresenter: UsuarioPresenter): UsuarioInte
 
     override fun deleteUsuarioFirebase(idDocumento: String) {
         usuarioRepository.deleteUsuarioFirebase(idDocumento)
-    }
+    }*/
 
 }

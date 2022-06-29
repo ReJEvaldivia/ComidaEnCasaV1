@@ -4,16 +4,16 @@ import com.utp.comidaencasav1.model.Usuario
 
 interface UsuarioView {
     //Vista
-    fun showUsuarios(usuarios: ArrayList<Usuario>)
     fun showUsuarioDefault(usuario: Usuario)
+    //fun showUsuarios(usuarios: ArrayList<Usuario>)
 
     //Navegar al Fragment usuarios
-    fun navigateNavUsuarios()
+    //fun navigateUsuarios()
 
     //Presentador
-    fun getUsuarios(idUsuarioCreador: Int)
     fun getUsuarioDefault()
-    fun setUsuario(usuario: Usuario)
-    fun updateUsuario(usuario: Usuario)
-    fun deleteUsuario(idDocumento: String)
+    //fun getUsuarios(idUsuarioCreador: Int)
+    //fun setUsuario(usuario: Usuario)
+    //fun updateUsuario(usuario: Usuario)
+    //fun deleteUsuario(idDocumento: String)
 }

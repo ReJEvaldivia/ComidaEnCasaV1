@@ -4,14 +4,15 @@ import com.utp.comidaencasav1.model.Usuario
 
 interface UsuarioPresenter {
     //Vista
-    fun showUsuarios(usuarios: ArrayList<Usuario>)
     fun showUsuarioDefault(usuario: Usuario)
-    fun navigateNavUsuarios()
+
+    //fun showUsuarios(usuarios: ArrayList<Usuario>)
+    //fun navigateNavUsuarios()
 
     //Interactor
-    fun getUsuarios(idUsuarioCreador: Int)
     fun getUsuarioDefault()
-    fun setUsuario(usuario: Usuario)
+    //fun getUsuarios(idUsuarioCreador: Int)
+    /*fun setUsuario(usuario: Usuario)
     fun updateUsuario(usuario: Usuario)
-    fun deleteUsuario(idDocumento: String)
+    fun deleteUsuario(idDocumento: String)*/
 }

@@ -38,12 +38,11 @@ class MainActivity : AppCompatActivity() {
 
         /*
         //Recuperar el extra
-        val bundleExt = intent.extras!!
-        val ext_usuario = bundleExt.get("ext_usuario")
-        val usuario = ext_usuario as Usuario
-        val bundleArg = bundleOf("arg_usuario" to usuario)
-        //Enviar extra a los fragments
-        navController.navigate(R.id.nav_platos, bundleArg)*/
+        var usuario = ExtraHelper().getExtUsuario(this)
+        val bundle = ArgumentoHelper().setArgUsuario(usuario)
+        //Enviar argumento a los fragments
+        navController.navigate(R.id.nav_platos, bundle)
+        */
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.

@@ -109,7 +109,7 @@ class PlatosDetalleFragment: Fragment() , PlatoView {
         }
     }
 
-    override fun navigateNavPlatos() {
+    override fun navigatePlatosFragment() {
         TODO("Not yet implemented")
     }
 

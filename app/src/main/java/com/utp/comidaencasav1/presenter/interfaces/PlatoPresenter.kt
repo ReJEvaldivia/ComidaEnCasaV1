@@ -5,7 +5,7 @@ import com.utp.comidaencasav1.model.Plato
 interface PlatoPresenter {
     //Vista
     fun showPlatos(platos: ArrayList<Plato>)
-    fun navigateNavPlatos()
+    fun navigatePlatosFragment()
 
     //Interactor
     fun getPlatos(idUsuarioCreador: Int)
