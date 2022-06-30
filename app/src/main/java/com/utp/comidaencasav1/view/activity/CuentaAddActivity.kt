@@ -6,9 +6,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
-import com.google.firebase.firestore.ktx.toObjects
 import com.utp.comidaencasav1.R
 import com.utp.comidaencasav1.databinding.ActivityCuentaAddBinding
 import com.utp.comidaencasav1.helper.ExtraHelper
@@ -40,22 +37,6 @@ class CuentaAddActivity : AppCompatActivity(), CuentaView {
         btnRegistrarse!!.setOnClickListener {
             var cuenta: Cuenta = getComponents()
             setCuenta(cuenta)
-            /*
-            cuentaRef.orderBy("idCuenta", Query.Direction.DESCENDING).limit(1).get()
-                .addOnSuccessListener { querySnapshot ->
-                    val cuentas = ArrayList(querySnapshot.toObjects<Cuenta>())
-                    var idCount: Int = 0
-                    if (cuentas.size > 0) {
-                        idCount =
-                            cuentas[0].idCuenta//Recupera el último idCount registrado en la BD
-                    }
-                    cuenta.idCuenta = idCount + 1
-
-                    cuentaRef.add(cuenta)
-                        .addOnSuccessListener {
-
-                        }
-                }*/
         }
     }
 
@@ -85,11 +66,7 @@ class CuentaAddActivity : AppCompatActivity(), CuentaView {
         this.startActivity(it)
     }
 
-    override fun getCuenta(cuenta: Cuenta) {
-        TODO("Not yet implemented")
-    }
-
-    override fun setCuenta(cuenta: Cuenta) {
+    private fun setCuenta(cuenta: Cuenta) {
         cuentaPresenter!!.setCuenta(cuenta)
     }
 }

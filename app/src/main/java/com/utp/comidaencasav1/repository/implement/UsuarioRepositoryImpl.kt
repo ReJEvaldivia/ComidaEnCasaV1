@@ -1,5 +1,6 @@
 package com.utp.comidaencasav1.repository.implement
 
+import android.content.Intent
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.toObjects
 import com.utp.comidaencasav1.helper.ConstanteHelper
@@ -7,6 +8,7 @@ import com.utp.comidaencasav1.model.Usuario
 import com.utp.comidaencasav1.presenter.interfaces.UsuarioPresenter
 import com.utp.comidaencasav1.repository.interfaces.UsuarioRepository
 import com.utp.comidaencasav1.repository.network.FirestoreService
+import com.utp.comidaencasav1.view.activity.PerfilActivity
 
 class UsuarioRepositoryImpl(var usuarioPresenter: UsuarioPresenter) : UsuarioRepository {
     private val firestoreService = FirestoreService<Usuario>()
@@ -24,35 +26,47 @@ class UsuarioRepositoryImpl(var usuarioPresenter: UsuarioPresenter) : UsuarioRep
             }
     }
 
-    /*override fun getUsuariosFirebase(idUsuarioCreador: Int) {
-
-        //Recupera con filtros
-        usuarioRef.whereEqualTo("idUsuarioCreador", idUsuarioCreador).orderBy("nombre")
+    override fun getUsuariosFirebase(idCuenta: Int) {
+        usuarioRef.whereEqualTo("idCuenta", idCuenta).orderBy("idRol").limit(8)
             .get()
             .addOnSuccessListener { querySnapshot ->
                 var usuarios =
-                    firestoreService.getArrayListModel(querySnapshot, Usuario::class.java)
-                usuarioPresenter.showUsuarios(usuarios)
+                    firestoreService.getListModel(querySnapshot, Usuario::class.java)
+                usuarioPresenter.showPerfiles(usuarios)
             }
+    }
 
-    }*/
-/*
     override fun setUsuarioFirebase(usuario: Usuario) {
-        usuarioRef.orderBy("idUsuario", Query.Direction.DESCENDING).limit(1)
-            .get()//Recupera el último idUsuario registrado en la BD
+        usuarioRef.orderBy("idUsuario", Query.Direction.DESCENDING)
+            .limit(1).get()
             .addOnSuccessListener { querySnapshot ->
-                var usuarios = firestoreService.getArrayListModel(querySnapshot, Usuario::class.java)
+                //var usuarios = firestoreService.getArrayListModel(querySnapshot, Usuario::class.java)
+                var usuarios =
+                    firestoreService.getListModel(querySnapshot, Usuario::class.java)
                 usuario.idUsuario = if (usuarios.size > 0) usuarios[0].idUsuario + 1 else 1
 
                 val newUsuarioRef = usuarioRef.document()
                 usuario.idDocumento = newUsuarioRef.id//Asignar el idDocumento
 
-                newUsuarioRef.set(usuario)
-                    .addOnSuccessListener {
-                        usuarioPresenter.navigateNavUsuarios()
+                usuarioRef.whereEqualTo("idCuenta", usuario.idCuenta).limit(1)
+                    .get()
+                    .addOnSuccessListener { querySnapshot ->
+                        //Si existe por lo menos un perfil en la cuenta
+                        if (querySnapshot.size() > 0) {
+                            //Participante
+                            usuario.idRol = 2
+                        } else {
+                            //Cocinero
+                            usuario.idRol = 1
+                        }
+
+                        newUsuarioRef.set(usuario)
+                            .addOnSuccessListener {
+                                usuarioPresenter.navigatePerfilActivity()
+                            }
                     }
             }
-    }*/
+    }
 
     /* override fun updateUsuarioFirebase(usuario: Usuario) {
          usuarioRef.document(usuario.idDocumento)

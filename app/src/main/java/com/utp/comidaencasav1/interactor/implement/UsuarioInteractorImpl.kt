@@ -13,14 +13,17 @@ class UsuarioInteractorImpl(var usuarioPresenter: UsuarioPresenter): UsuarioInte
         usuarioRepository.getUsuarioDefaultFirebase()
     }
 
-    /*override fun getUsuariosFirebase(idUsuarioCreador: Int) {
-        usuarioRepository.getUsuariosFirebase(idUsuarioCreador)
-    }*/
+    override fun getUsuariosFirebase(idCuenta: Int) {
+        usuarioRepository.getUsuariosFirebase(idCuenta)
 
-    /*override fun setUsuarioFirebase(usuario: Usuario) {
+    }
+
+    override fun setUsuarioFirebase(usuario: Usuario) {
         usuarioRepository.setUsuarioFirebase(usuario)
     }
 
+
+    /*
     override fun updateUsuarioFirebase(usuario: Usuario) {
         usuarioRepository.updateUsuarioFirebase(usuario)
     }

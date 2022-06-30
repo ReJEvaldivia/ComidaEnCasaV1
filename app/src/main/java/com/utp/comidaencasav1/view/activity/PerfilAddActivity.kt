@@ -1,21 +1,27 @@
 package com.utp.comidaencasav1.view.activity
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
-import com.google.firebase.firestore.ktx.toObjects
 import com.utp.comidaencasav1.databinding.ActivityPerfilAddBinding
+import com.utp.comidaencasav1.helper.ExtraHelper
 import com.utp.comidaencasav1.model.Cuenta
 import com.utp.comidaencasav1.model.Usuario
+import com.utp.comidaencasav1.presenter.implement.UsuarioPresenterImpl
+import com.utp.comidaencasav1.presenter.interfaces.UsuarioPresenter
+import com.utp.comidaencasav1.view.interfaces.UsuarioView
 
-class PerfilAddActivity : AppCompatActivity() {
+class PerfilAddActivity : AppCompatActivity(), UsuarioView {
 
     private lateinit var binding: ActivityPerfilAddBinding
+
+    private var extraHelper: ExtraHelper? = null
+    private var usuarioPresenter: UsuarioPresenter? = null
+    private var cuenta: Cuenta? = null
+    private var edtNombre: EditText? = null
+    private var btnAgregar: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,55 +29,51 @@ class PerfilAddActivity : AppCompatActivity() {
         val root: View = binding.root
         setContentView(root)
 
-        var edtNombre: EditText = binding.edtNombrePerfilCreate
-        var btnAgregar: Button = binding.btnAgregarPerfilCreate
+        initialConfig()
 
-        //Crear una instancia de Firebase
-        val db = FirebaseFirestore.getInstance()
-        val usuarioRef = db.collection("Usuario")
-
-        //Recuperar el item
-        val bundle = intent.extras!!
-        val ext_cuenta = bundle.get("ext_cuenta")
-        val cuenta = ext_cuenta as Cuenta
-
-        btnAgregar.setOnClickListener {
-            //INSERT 😎
-            var usuario: Usuario = Usuario()
-            usuario.nombre = edtNombre.text.toString()
-            usuario.idCuenta = cuenta.idCuenta
-
-            usuarioRef.orderBy("idUsuario", Query.Direction.DESCENDING)
-                .limit(1).get()
-                .addOnSuccessListener { querySnapshot ->
-                    val usuarios = ArrayList(querySnapshot.toObjects<Usuario>())
-                    var idCount: Int = 0
-                    if (usuarios.size > 0) {
-                        idCount =
-                            usuarios[0].idUsuario//Recupera el último idCount registrado en la BD
-                    }
-                    usuario.idUsuario = idCount + 1
-
-                    usuarioRef.whereEqualTo("idCuenta", cuenta.idCuenta).limit(1)
-                        .get()
-                        .addOnSuccessListener { querySnapshot ->
-                            //Si existe perfil en la cuenta
-                            if (querySnapshot.size() > 0) {
-                                //Participante
-                                usuario.idRol = 2
-                            } else {
-                                //Cocinero
-                                usuario.idRol = 1
-                            }
-                            usuarioRef.add(usuario)
-                                .addOnSuccessListener {
-                                    val it = Intent(root.context, PerfilActivity::class.java)
-                                    it.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                                    it.putExtra("ext_cuenta", cuenta)
-                                    root.context.startActivity(it)
-                                }
-                        }
-                }
+        btnAgregar!!.setOnClickListener {
+            var usuario: Usuario = getComponents()
+            setUsuario(usuario)
         }
+    }
+
+    private fun initialConfig() {
+        extraHelper = ExtraHelper()
+        usuarioPresenter = UsuarioPresenterImpl(this)
+        cuenta = extraHelper!!.getExtCuenta(this)
+        edtNombre = binding.edtNombrePerfilCreate
+        btnAgregar = binding.btnAgregarPerfilCreate
+    }
+
+    private fun getComponents(): Usuario {
+        var usuario: Usuario = Usuario()
+        usuario.nombre = edtNombre!!.text.toString()
+        usuario.idCuenta = cuenta!!.idCuenta
+        return usuario
+    }
+
+    override fun showUsuarioDefault(usuario: Usuario) {
+        TODO("Not yet implemented")
+    }
+
+    override fun navigatePerfilActivity() {
+        val it = extraHelper!!.setExtCuenta(this, cuenta!!, PerfilActivity::class.java)
+        this.startActivity(it)
+    }
+
+    override fun showPerfiles(usuarios: List<Usuario>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun getUsuario(): Usuario {
+        TODO("Not yet implemented")
+    }
+
+    override fun getUsuarioDefault() {
+        TODO("Not yet implemented")
+    }
+
+    private fun setUsuario(usuario: Usuario) {
+        usuarioPresenter!!.setUsuario(usuario)
     }
 }

@@ -3,11 +3,13 @@ package com.utp.comidaencasav1.presenter.interfaces
 import com.utp.comidaencasav1.model.Plato
 
 interface PlatoPresenter {
-    //Vista
+    //Visualización: Hace referencia al adapter
     fun showPlatos(platos: ArrayList<Plato>)
+
+    //Navegación:
     fun navigatePlatosFragment()
 
-    //Interactor
+    //CRUD:
     fun getPlatos(idUsuarioCreador: Int)
     fun setPlato(plato: Plato)
     fun updatePlato(plato: Plato)

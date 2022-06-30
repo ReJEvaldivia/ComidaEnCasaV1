@@ -20,12 +20,12 @@ class CuentaRepositoryImpl(var cuentaPresenter: CuentaPresenter) : CuentaReposit
             .addOnSuccessListener { querySnapshot ->
                 //Si existe registro con usuario
                 if (querySnapshot.size() > 0) {
-                    var cuenta: Cuenta = Cuenta()
+                    var cuentaRegistro: Cuenta = Cuenta()
                     for (documentSnapshot in querySnapshot) {
-                        cuenta = documentSnapshot.toObject<Cuenta>()!!
+                        cuentaRegistro = documentSnapshot.toObject<Cuenta>()!!
                         break
                     }
-                    cuentaPresenter.validateInicioSesion(cuenta)
+                    cuentaPresenter.validateInicioSesion(cuentaRegistro)
                 } else {
                     cuentaPresenter.validateInicioSesion(null)
                 }

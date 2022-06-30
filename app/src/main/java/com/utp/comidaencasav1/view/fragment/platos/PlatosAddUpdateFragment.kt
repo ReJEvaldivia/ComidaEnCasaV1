@@ -114,19 +114,15 @@ class PlatosAddUpdateFragment : Fragment(), PlatoView {
         binding.root.findNavController().navigate(R.id.nav_platos)
     }
 
-    override fun getPlatos(idUsuarioCreador: Int) {
-        TODO("Not yet implemented")
-    }
-
-    override fun setPlato(plato: Plato) {
+    private fun setPlato(plato: Plato) {
         platoPresenter?.setPlato(plato)
     }
 
-    override fun updatePlato(plato: Plato) {
+    private fun updatePlato(plato: Plato) {
         platoPresenter?.updatePlato(plato)
     }
 
-    override fun deletePlato(idDocumento: String) {
+    private fun deletePlato(idDocumento: String) {
         platoPresenter?.deletePlato(idDocumento)
     }
 }

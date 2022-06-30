@@ -39,8 +39,7 @@ class LoginActivity : AppCompatActivity(), CuentaView {
         }
 
         btnRegistrarse!!.setOnClickListener {
-            val it = Intent(root.context, CuentaAddActivity::class.java)
-            root.context.startActivity(it)
+            navigateCuentaAddActivity()
         }
     }
 
@@ -77,15 +76,16 @@ class LoginActivity : AppCompatActivity(), CuentaView {
         this.startActivity(it)
     }
 
+    private fun navigateCuentaAddActivity() {
+        val it = Intent(this, CuentaAddActivity::class.java)
+        this.startActivity(it)
+    }
+
     override fun navigateLoginActivity() {
         TODO("Not yet implemented")
     }
 
-    override fun getCuenta(cuenta: Cuenta) {
+    private fun getCuenta(cuenta: Cuenta) {
         cuentaPresenter!!.getCuenta(cuenta)
-    }
-
-    override fun setCuenta(cuenta: Cuenta) {
-        TODO("Not yet implemented")
     }
 }

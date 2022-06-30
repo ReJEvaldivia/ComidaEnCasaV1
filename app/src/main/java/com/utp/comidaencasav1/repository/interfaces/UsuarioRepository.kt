@@ -7,8 +7,6 @@ interface UsuarioRepository {
      * Recupera el usuario por defecto de firebase
      * */
     fun getUsuarioDefaultFirebase()
-    //fun getUsuariosFirebase(idUsuarioCreador: Int)
-    /*fun setUsuarioFirebase(usuario: Usuario)
-    fun updateUsuarioFirebase(usuario: Usuario)
-    fun deleteUsuarioFirebase(idDocumento: String)*/
+    fun getUsuariosFirebase(idCuenta: Int)
+    fun setUsuarioFirebase(usuario: Usuario)
 }

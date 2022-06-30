@@ -53,7 +53,7 @@ class PlatosFragment : Fragment(), PlatoView, UsuarioView {
         getPlatos(usuario!!.idUsuario)
 
         btnNuevoPlato!!.setOnClickListener {
-            root.findNavController().navigate(R.id.nav_platosAddUpdateFragment)
+            navigatePlatosAddUpdateFragment()
         }
 
         return root
@@ -91,27 +91,32 @@ class PlatosFragment : Fragment(), PlatoView, UsuarioView {
         //svBuscar!!.setOnQueryTextListener(this)
     }
 
+    private fun navigatePlatosAddUpdateFragment() {
+        binding.root.findNavController().navigate(R.id.nav_platosAddUpdateFragment)
+    }
+
     override fun navigatePlatosFragment() {
         TODO("Not yet implemented")
     }
 
-    override fun getPlatos(idUsuarioCreador: Int) {
+    private fun getPlatos(idUsuarioCreador: Int) {
         platoPresenter?.getPlatos(idUsuarioCreador)
     }
 
-    override fun setPlato(plato: Plato) {
+    override fun showUsuarioDefault(usuario: Usuario) {
+        val it = extraHelper?.setExtUsuario(context, usuario, MainActivity::class.java)
+        context?.startActivity(it)
+    }
+
+    override fun navigatePerfilActivity() {
         TODO("Not yet implemented")
     }
 
-    override fun updatePlato(plato: Plato) {
+    override fun showPerfiles(usuarios: List<Usuario>) {
         TODO("Not yet implemented")
     }
 
-    override fun deletePlato(idDocumento: String) {
-        TODO("Not yet implemented")
-    }
-
-    fun getUsuario(): Usuario {
+    override fun getUsuario(): Usuario {
         //Recuperar el extra
         val bundleExt = operacionHelper!!.getBundle(requireActivity())
         var usuario = Usuario()
@@ -119,16 +124,11 @@ class PlatosFragment : Fragment(), PlatoView, UsuarioView {
             //Recuperar el usuario
             usuario = extraHelper!!.getExtUsuario(requireActivity())
         } else {
-            //Esto se hace para inciar desde el Main con el usuario por defecto en la BD Firebase
+            //Esto se hace para iniciar desde el Main con el usuario por defecto en la BD Firebase
             usuarioPresenter = UsuarioPresenterImpl(this)
             getUsuarioDefault()
         }
         return usuario
-    }
-
-    override fun showUsuarioDefault(usuario: Usuario) {
-        val it = extraHelper?.setExtUsuario(context, usuario, MainActivity::class.java)
-        context?.startActivity(it)
     }
 
     override fun getUsuarioDefault() {

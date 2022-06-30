@@ -76,21 +76,7 @@ class VotacionFragment : Fragment(), PlatoView {
         TODO("Not yet implemented")
     }
 
-    override fun getPlatos(idUsuarioCreador: Int) {
+    private fun getPlatos(idUsuarioCreador: Int) {
         platoPresenter?.getPlatos(idUsuarioCreador)
     }
-
-    override fun setPlato(plato: Plato) {
-        TODO("Not yet implemented")
-    }
-
-    override fun updatePlato(plato: Plato) {
-        TODO("Not yet implemented")
-    }
-
-    override fun deletePlato(idDocumento: String) {
-        TODO("Not yet implemented")
-    }
-
-
 }

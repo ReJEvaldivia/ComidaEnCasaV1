@@ -16,18 +16,18 @@ import com.utp.comidaencasav1.model.Plato
 class PlatosAdapter(var platos: ArrayList<Plato>, var resource: Int) :
     RecyclerView.Adapter<PlatosAdapter.ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, position: Int): ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         return ViewHolder(layoutInflater.inflate(R.layout.card_platos, parent, false))
-    }
-
-    override fun getItemCount(): Int {
-        return platos.size ?: 0
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         var plato = platos.get(position)
         holder.bind(plato)
+    }
+
+    override fun getItemCount(): Int {
+        return platos.size ?: 0
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -54,4 +54,5 @@ class PlatosAdapter(var platos: ArrayList<Plato>, var resource: Int) :
             })
         }
     }
+
 }

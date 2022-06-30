@@ -1,25 +1,30 @@
 package com.utp.comidaencasav1.view.activity
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.toObjects
 import com.utp.comidaencasav1.adapter.activity.PerfilAdapter
 import com.utp.comidaencasav1.R
 import com.utp.comidaencasav1.databinding.ActivityPerfilBinding
+import com.utp.comidaencasav1.helper.ExtraHelper
 import com.utp.comidaencasav1.model.Cuenta
 import com.utp.comidaencasav1.model.Usuario
+import com.utp.comidaencasav1.presenter.implement.UsuarioPresenterImpl
+import com.utp.comidaencasav1.presenter.interfaces.UsuarioPresenter
+import com.utp.comidaencasav1.view.interfaces.UsuarioView
 
-
-class PerfilActivity : AppCompatActivity() {
+class PerfilActivity : AppCompatActivity(), UsuarioView {
 
     private var rcvPerfil: RecyclerView? = null
     private lateinit var binding: ActivityPerfilBinding
+
+    private var extraHelper: ExtraHelper? = null
+    private var usuarioPresenter: UsuarioPresenter? = null
+    private var btnAgregar: Button? = null
+    private var cuenta: Cuenta? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,42 +32,38 @@ class PerfilActivity : AppCompatActivity() {
         val root: View = binding.root
         setContentView(root)
 
+        initialConfig()
+
+        getUsuarios()
+
+        btnAgregar!!.setOnClickListener {
+            navigatePerfilAddActivity()
+        }
+    }
+
+    private fun initialConfig() {
+        extraHelper = ExtraHelper()
+        usuarioPresenter = UsuarioPresenterImpl(this)
+
         //BOTÓN
-        var btnAgregar: Button = binding.btnAgregarPerfil
+        btnAgregar = binding.btnAgregarPerfil
 
         //VIEW
         rcvPerfil = binding.rcvPerfilesPerfil//UI
         rcvPerfil?.layoutManager = GridLayoutManager(this, 2)
 
-        //Crear una instancia de Firebase
-        val db = FirebaseFirestore.getInstance()
-        val usuarioRef = db.collection("Usuario")
-
-        //Recuperar el item
-        val bundle = intent.extras!!
-        val ext_cuenta = bundle.get("ext_cuenta")
-        val cuenta = ext_cuenta as Cuenta
-
-        if (ext_cuenta != null) {
-            //Recupera con filtros
-            usuarioRef.whereEqualTo("idCuenta", cuenta.idCuenta).orderBy("idRol").limit(8)
-                .get()
-                .addOnSuccessListener { querySnapshot ->
-                    val usuarios = querySnapshot.toObjects<Usuario>()
-                    showPerfiles(usuarios)
-                }
-        }
-
-        btnAgregar.setOnClickListener {
-            val it = Intent(root.context, PerfilAddActivity::class.java)
-            it.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-            it.putExtra("ext_cuenta", cuenta)
-            root.context.startActivity(it)
-        }
-
+        cuenta = extraHelper!!.getExtCuenta(this)
     }
 
-    fun showPerfiles(usuarios: List<Usuario>?) {
+    override fun showUsuarioDefault(usuario: Usuario) {
+        TODO("Not yet implemented")
+    }
+
+    override fun navigatePerfilActivity() {
+        TODO("Not yet implemented")
+    }
+
+    override fun showPerfiles(usuarios: List<Usuario>) {
         try {
             rcvPerfil!!.adapter = PerfilAdapter(
                 usuarios,
@@ -71,6 +72,23 @@ class PerfilActivity : AppCompatActivity() {
         } catch (e: Exception) {
             e.printStackTrace()
         }
+    }
+
+    override fun getUsuario(): Usuario {
+        TODO("Not yet implemented")
+    }
+
+    private fun navigatePerfilAddActivity() {
+        val it = extraHelper!!.setExtCuenta(this, cuenta!!, PerfilAddActivity::class.java)
+        this.startActivity(it)
+    }
+
+    override fun getUsuarioDefault() {
+        TODO("Not yet implemented")
+    }
+
+    private fun getUsuarios() {
+        usuarioPresenter!!.getUsuarios(cuenta!!.idCuenta)
     }
 
 }

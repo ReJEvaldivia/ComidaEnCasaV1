@@ -19,6 +19,10 @@ class FirestoreService<T>() {
         return ArrayList(querySnapshot.toObjects(clazz))
     }
 
+    fun getListModel(querySnapshot: QuerySnapshot, clazz: Class<T>): List<T> {
+        return querySnapshot.toObjects(clazz)
+    }
+
     /*
      //Recupera 1 documento
      platoRef.document("FjvPTqZZw54xYCzBvdgk").get().addOnSuccessListener { documentSnapshot ->
