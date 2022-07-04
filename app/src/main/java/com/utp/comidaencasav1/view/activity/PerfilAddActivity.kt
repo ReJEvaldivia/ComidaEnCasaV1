@@ -65,11 +65,11 @@ class PerfilAddActivity : AppCompatActivity(), UsuarioView {
         TODO("Not yet implemented")
     }
 
-    override fun getUsuario(): Usuario {
+    override fun getUsuarioInitialConfig(): Usuario {
         TODO("Not yet implemented")
     }
 
-    override fun getUsuarioDefault() {
+    override fun getUsuarioDefaultInitialConfig() {
         TODO("Not yet implemented")
     }
 

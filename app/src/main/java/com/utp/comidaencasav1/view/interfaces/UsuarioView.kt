@@ -6,6 +6,6 @@ interface UsuarioView {
     fun showUsuarioDefault(usuario: Usuario)
     fun navigatePerfilActivity()
     fun showPerfiles(usuarios: List<Usuario>)
-    fun getUsuario(): Usuario
-    fun getUsuarioDefault()
+    fun getUsuarioInitialConfig(): Usuario
+    fun getUsuarioDefaultInitialConfig()
 }

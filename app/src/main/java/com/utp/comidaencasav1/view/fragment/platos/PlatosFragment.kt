@@ -21,6 +21,7 @@ import com.utp.comidaencasav1.presenter.implement.PlatoPresenterImpl
 import com.utp.comidaencasav1.presenter.implement.UsuarioPresenterImpl
 import com.utp.comidaencasav1.presenter.interfaces.PlatoPresenter
 import com.utp.comidaencasav1.presenter.interfaces.UsuarioPresenter
+import com.utp.comidaencasav1.service.Service
 import com.utp.comidaencasav1.view.activity.MainActivity
 import com.utp.comidaencasav1.view.interfaces.PlatoView
 import com.utp.comidaencasav1.view.interfaces.UsuarioView
@@ -78,7 +79,7 @@ class PlatosFragment : Fragment(), PlatoView, UsuarioView {
     private fun initialConfig() {
         extraHelper = ExtraHelper()
         operacionHelper = OperacionHelper()
-        usuario = getUsuario()
+        usuario = getUsuarioInitialConfig()
         //Instancia con el presentador
         platoPresenter = PlatoPresenterImpl(this)
 
@@ -116,22 +117,25 @@ class PlatosFragment : Fragment(), PlatoView, UsuarioView {
         TODO("Not yet implemented")
     }
 
-    override fun getUsuario(): Usuario {
+    override fun getUsuarioInitialConfig(): Usuario {
         //Recuperar el extra
         val bundleExt = operacionHelper!!.getBundle(requireActivity())
         var usuario = Usuario()
         if (bundleExt != null) {
             //Recuperar el usuario
             usuario = extraHelper!!.getExtUsuario(requireActivity())
+            val intent = extraHelper?.setExtUsuario(context, usuario, Service::class.java)
+            context?.stopService(intent)
+            context?.startService(intent)
         } else {
             //Esto se hace para iniciar desde el Main con el usuario por defecto en la BD Firebase
             usuarioPresenter = UsuarioPresenterImpl(this)
-            getUsuarioDefault()
+            getUsuarioDefaultInitialConfig()
         }
         return usuario
     }
 
-    override fun getUsuarioDefault() {
+    override fun getUsuarioDefaultInitialConfig() {
         usuarioPresenter?.getUsuarioDefault()
     }
 

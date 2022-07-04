@@ -9,9 +9,9 @@ class Plato(
     var idUsuarioCreador: Int = 0,
     var nombre: String = "",
     var preparacion: String = "",
-    var idCategoria: Int = 0,
-    var estadoVisibilidad: Boolean = false,
-    var estadoCategoriaSemanal: Boolean = false,
+    var idCategoria: Int = Categoria.idCategoria.BALANCEADO,
+    var estadoVisibilidad: Boolean = true,
+    var estadoCategoriaSemanal: Boolean = true,
     var fechaCategoriaSemanal: Date? = null
 ) : Serializable {
 

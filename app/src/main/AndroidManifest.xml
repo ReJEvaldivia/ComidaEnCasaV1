@@ -13,6 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ComidaEnCasaV1"
         tools:targetApi="31">
+        <service
+            android:name=".service.Service"
+            android:enabled="true"
+            android:exported="true"></service>
+
         <activity
             android:name=".view.activity.PerfilAddActivity"
             android:exported="false"

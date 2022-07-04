@@ -74,7 +74,7 @@ class PerfilActivity : AppCompatActivity(), UsuarioView {
         }
     }
 
-    override fun getUsuario(): Usuario {
+    override fun getUsuarioInitialConfig(): Usuario {
         TODO("Not yet implemented")
     }
 
@@ -83,7 +83,7 @@ class PerfilActivity : AppCompatActivity(), UsuarioView {
         this.startActivity(it)
     }
 
-    override fun getUsuarioDefault() {
+    override fun getUsuarioDefaultInitialConfig() {
         TODO("Not yet implemented")
     }
 
