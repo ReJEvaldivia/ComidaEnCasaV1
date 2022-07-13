@@ -120,23 +120,30 @@ class PlatosFragment : Fragment(), PlatoView, UsuarioView {
     override fun getUsuarioInitialConfig(): Usuario {
         //Recuperar el extra
         val bundleExt = operacionHelper!!.getBundle(requireActivity())
-        var usuario = Usuario()
+        var usuario2 = Usuario()
         if (bundleExt != null) {
             //Recuperar el usuario
-            usuario = extraHelper!!.getExtUsuario(requireActivity())
-            val intent = extraHelper?.setExtUsuario(context, usuario, Service::class.java)
-            context?.stopService(intent)
-            context?.startService(intent)
+            usuario2 = extraHelper!!.getExtUsuario(requireActivity())
+            callService(usuario2)
         } else {
             //Esto se hace para iniciar desde el Main con el usuario por defecto en la BD Firebase
             usuarioPresenter = UsuarioPresenterImpl(this)
             getUsuarioDefaultInitialConfig()
         }
-        return usuario
+        return usuario2
     }
 
     override fun getUsuarioDefaultInitialConfig() {
         usuarioPresenter?.getUsuarioDefault()
+    }
+
+    /**
+     * Llama al servicio de sugerencia aleatoria
+     * */
+    private fun callService(usuario2: Usuario) {
+        val intent = extraHelper?.setExtUsuario(context, usuario2, Service::class.java)
+        context?.stopService(intent)
+        context?.startService(intent)
     }
 
 }

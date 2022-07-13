@@ -4,6 +4,7 @@ import java.io.Serializable
 import java.util.*
 
 class Plato(
+    var idCuenta: Int = 0,
     var idDocumento: String = "",
     var idPlato: Int = 0,
     var idUsuarioCreador: Int = 0,

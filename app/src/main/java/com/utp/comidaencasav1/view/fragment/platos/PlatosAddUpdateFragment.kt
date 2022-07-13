@@ -99,8 +99,9 @@ class PlatosAddUpdateFragment : Fragment(), PlatoView {
 
     private fun getComponents(): Plato {
         var plato: Plato = Plato()
+        plato.idCuenta = usuario!!.idCuenta
         plato.idDocumento = idDocumento
-        plato.idUsuarioCreador = usuario?.idUsuario!!
+        plato.idUsuarioCreador = usuario!!.idUsuario
         plato.nombre = edtNombre!!.text.toString()
         plato.estadoVisibilidad = chkEstadoVisibilidad!!.isChecked
         return plato
