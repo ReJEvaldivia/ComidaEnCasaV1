@@ -6,59 +6,57 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.SearchView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.utp.comidaencasav1.R
 import com.utp.comidaencasav1.adapter.fragment.insumos.InsumosAdapter
 import com.utp.comidaencasav1.databinding.FragmentInsumosBinding
-import com.utp.comidaencasav1.model.Plato
-import com.utp.comidaencasav1.presenter.interfaces.PlatoPresenter
-import com.utp.comidaencasav1.presenter.implement.PlatoPresenterImpl
-import com.utp.comidaencasav1.view.interfaces.PlatoView
+import com.utp.comidaencasav1.helper.ExtraHelper
+import com.utp.comidaencasav1.helper.OperacionHelper
+import com.utp.comidaencasav1.model.Cuenta
+import com.utp.comidaencasav1.model.Insumo
+import com.utp.comidaencasav1.model.Usuario
+import com.utp.comidaencasav1.presenter.interfaces.InsumoPresenter
+import com.utp.comidaencasav1.presenter.implement.InsumoPresenterImpl
+import com.utp.comidaencasav1.presenter.implement.UsuarioPresenterImpl
+import com.utp.comidaencasav1.presenter.interfaces.UsuarioPresenter
+import com.utp.comidaencasav1.service.Service
+import com.utp.comidaencasav1.view.activity.MainActivity
+import com.utp.comidaencasav1.view.interfaces.InsumoView
+import com.utp.comidaencasav1.view.interfaces.UsuarioView
 
-class InsumosFragment : Fragment() , PlatoView {
+class InsumosFragment : Fragment(), InsumoView {
 
     private var _binding: FragmentInsumosBinding? = null
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
-    private var platoPresenter: PlatoPresenter? = null
+    private var extraHelper: ExtraHelper? = null
+    private var operacionHelper: OperacionHelper? = null
+    private var insumoPresenter: InsumoPresenter? = null
+    private var usuarioPresenter: UsuarioPresenter? = null
     private var rvInsumos: RecyclerView? = null
+    private var usuario: Usuario? = null
+    private var btnNuevoInsumo: Button? = null
+    private var btnGuardarStock: Button? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val insumosViewModel =
-            ViewModelProvider(this).get(InsumosViewModel::class.java)
-
         _binding = FragmentInsumosBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        platoPresenter = PlatoPresenterImpl(this)
+        initialConfig()
 
-        //VIEW
-        rvInsumos = binding.rcvInsumosInsumo//UI
-        rvInsumos?.layoutManager = LinearLayoutManager(this.context)
+        getInsumos(usuario!!.idCuenta)
 
-        getPlatos(3)
-
-        _binding!!.btnNuevoInsumo.setOnClickListener {
-            root.findNavController().navigate(R.id.nav_insumosAddUpdateFragment)
+        btnNuevoInsumo!!.setOnClickListener {
+            navigateInsumosAddUpdateFragment()
         }
-
-        //val nav = Navigation.createNavigateOnClickListener(R.id.nav_platosAddUpdateFragment)
-
-        /*_binding!!.btnNuevoInsumo.setOnClickListener({
-            nav.onClick(it)
-        })
-
-        _binding!!.btnGuardarInsumo.setOnClickListener({
-            nav.onClick(it)
-        })*/
 
         return root
     }
@@ -68,11 +66,10 @@ class InsumosFragment : Fragment() , PlatoView {
         _binding = null
     }
 
-
-    override fun showPlatos(platos: ArrayList<Plato>) {
+    override fun showInsumos(insumos: ArrayList<Insumo>) {
         try {
             rvInsumos!!.adapter = InsumosAdapter(
-                platos,
+                insumos,
                 R.layout.card_insumos
             )//Llama al CardView y lo setea en el Adapter del ReciclerView
         } catch (e: Exception) {
@@ -80,11 +77,31 @@ class InsumosFragment : Fragment() , PlatoView {
         }
     }
 
-    override fun navigatePlatosFragment() {
+    private fun initialConfig() {
+        extraHelper = ExtraHelper()
+        operacionHelper = OperacionHelper()
+        usuario = extraHelper!!.getExtUsuario(requireActivity())
+
+        //Instancia con el presentador
+        insumoPresenter = InsumoPresenterImpl(this)
+
+        //VIEW
+        rvInsumos = binding.rcvInsumosInsumo//UI
+        rvInsumos?.layoutManager = LinearLayoutManager(this.context)
+
+        btnNuevoInsumo = binding.btnNuevoInsumo
+        btnGuardarStock = binding.btnGuardarInsumo
+    }
+
+    private fun navigateInsumosAddUpdateFragment() {
+        binding.root.findNavController().navigate(R.id.nav_insumosAddUpdateFragment)
+    }
+
+    override fun navigateInsumosFragment() {
         TODO("Not yet implemented")
     }
 
-    private fun getPlatos(idUsuarioCreador: Int) {
-        platoPresenter?.getPlatos(idUsuarioCreador)
+    private fun getInsumos(idCuenta: Int) {
+        insumoPresenter?.getInsumos(idCuenta)
     }
 }

@@ -46,16 +46,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtNombre_InsumoAU" />
 
+    <EditText
+        android:id="@+id/edtUnidad_InsumoAU"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:ems="10"
+        android:hint="Escriba la unidad del insumo"
+        android:inputType="textPersonName"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView14"
+        app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
     <Button
         android:id="@+id/btnRegistrar_InsumoAU"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:text="REGISTRAR INSUMO"
         app:cornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spnUnidad_InsumoAU" />
+        app:layout_constraintTop_toBottomOf="@+id/edtUnidad_InsumoAU" />
 
     <Button
         android:id="@+id/btnEditar_InsumoAU"
@@ -78,18 +93,5 @@
         app:layout_constraintEnd_toEndOf="@+id/btnEditar_InsumoAU"
         app:layout_constraintStart_toStartOf="@+id/btnEditar_InsumoAU"
         app:layout_constraintTop_toBottomOf="@+id/btnEditar_InsumoAU" />
-
-    <Spinner
-        android:id="@+id/spnUnidad_InsumoAU"
-        style="@android:style/Widget.Holo.Light.Spinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@color/blue_1"
-        android:gravity="center"
-        android:popupBackground="@drawable/desplegable_personalizado"
-        android:textAlignment="center"
-        app:layout_constraintStart_toStartOf="@+id/textView17"
-        app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

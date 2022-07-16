@@ -4,49 +4,58 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.utp.comidaencasav1.R
-import com.utp.comidaencasav1.model.Plato
+import com.utp.comidaencasav1.databinding.CardInsumosBinding
+import com.utp.comidaencasav1.helper.ArgumentoHelper
+import com.utp.comidaencasav1.model.Insumo
 
-class InsumosAdapter(var platos: ArrayList<Plato>?, var resource: Int) :
-    RecyclerView.Adapter<InsumosAdapter.CardPlatoHolder>() {
+class InsumosAdapter(var insumos: ArrayList<Insumo>, var resource: Int) :
+    RecyclerView.Adapter<InsumosAdapter.ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, p1: Int): CardPlatoHolder {
-        var view: View = LayoutInflater.from(parent!!.context).inflate(resource, parent, false)
-        return CardPlatoHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val layoutInflater = LayoutInflater.from(parent.context)
+        return ViewHolder(layoutInflater.inflate(R.layout.card_insumos, parent, false))
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        var insumo = insumos.get(position)
+        holder.bind(insumo)
     }
 
     override fun getItemCount(): Int {
-        return platos?.size ?: 0
+        return insumos.size ?: 0
     }
 
-    override fun onBindViewHolder(holder: CardPlatoHolder, position: Int) {
-        var plato = platos?.get(position)
-        holder.setDataCard(plato)
-        holder.edtCantidad.setText("0")
-        holder.txtUnidad.setText("kg")
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val binding = CardInsumosBinding.bind(view)
+        val root: View = binding.root
+        var insumo: Insumo? = null
+        var txtNombre: TextView = binding.txtNombreInsumo
+        var edtCantidad: EditText = binding.edtCantidadInsumo
+        var txtUnidad: TextView = binding.txtUnidadInsumo
+        var btnEditar: Button = binding.btnEditarInsumo
+        var lay: LinearLayout = binding.layInsumos
 
-        /*val bundle = bundleOf("arg_item" to plato)
 
-        holder.btnEditar.setOnClickListener(View.OnClickListener {
-            it.findNavController().navigate(R.id.nav_platosAddUpdateFragment, bundle)
-        })*/
-    }
+        fun bind(insumo: Insumo?) {
+            //Enviar argumentos a otro fragment
+            val bundle = ArgumentoHelper().setArgInsumo(insumo)
+            this.insumo = insumo
+            txtNombre.text = insumo?.idInsumo.toString() + " " + insumo?.nombre
+            edtCantidad.setText(""+insumo?.cantidad)
+            txtUnidad.text = insumo?.unidad
 
-    class CardPlatoHolder(v: View) : RecyclerView.ViewHolder(v) {
-        var plato: Plato? = null
-        var txtNombre: TextView = v.findViewById(R.id.txtNombre_Insumo)
-        var edtCantidad: TextView = v.findViewById(R.id.edtCantidad_Insumo)
-        var txtUnidad: TextView = v.findViewById(R.id.txtUnidad_Insumo)
-        var btnEditar: Button = v.findViewById(R.id.btnEditar_Insumo)
-        var lay: LinearLayout = v.findViewById(R.id.lay_insumos)
+            btnEditar.setOnClickListener(View.OnClickListener {
+                it.findNavController().navigate(R.id.nav_insumosAddUpdateFragment, bundle)
+            })
 
-        fun setDataCard(plato: Plato?) {
-            this.plato = plato
-            txtNombre.text = plato?.nombre
         }
-
     }
+
 }
