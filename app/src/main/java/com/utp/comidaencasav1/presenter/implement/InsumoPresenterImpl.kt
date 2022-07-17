@@ -10,12 +10,12 @@ class InsumoPresenterImpl(var insumoView: InsumoView): InsumoPresenter {
 
     private var insumoInteractor: InsumoInteractor = InsumoInteractorImpl(this)
 
-    override fun showInsumos(insumos: ArrayList<Insumo>) {
+    override fun showInsumos(insumos: List<Insumo>) {
         insumoView.showInsumos(insumos)
     }
 
-    override fun navigateInsumosFragment() {
-        insumoView.navigateInsumosFragment()
+    override fun navigateInsumosFragmentOPlatosDetalleFragment() {
+        insumoView.navigateInsumosFragmentOPlatosDetalleFragment()
     }
 
     override fun getInsumos(idCuenta: Int) {

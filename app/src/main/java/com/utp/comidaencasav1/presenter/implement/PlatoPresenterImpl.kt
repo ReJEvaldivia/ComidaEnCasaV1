@@ -10,7 +10,7 @@ class PlatoPresenterImpl (var platoView: PlatoView): PlatoPresenter {
 
     private var platoInteractor: PlatoInteractor = PlatoInteractorImpl(this)
 
-    override fun showPlatos(platos: ArrayList<Plato>) {
+    override fun showPlatos(platos: List<Plato>) {
         platoView.showPlatos(platos)
     }
 

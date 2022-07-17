@@ -15,7 +15,7 @@ class PlatoRepositoryImpl(var platoPresenter: PlatoPresenter) : PlatoRepository 
         platoRef.whereEqualTo("idUsuarioCreador", idUsuarioCreador).orderBy("nombre")
             .get()
             .addOnSuccessListener { querySnapshot ->
-                var platos = firestoreService.getArrayListModel(querySnapshot, Plato::class.java)
+                var platos = firestoreService.getListModel(querySnapshot, Plato::class.java)
                 platoPresenter.showPlatos(platos)
             }
     }
@@ -24,7 +24,7 @@ class PlatoRepositoryImpl(var platoPresenter: PlatoPresenter) : PlatoRepository 
         platoRef.orderBy("idPlato", Query.Direction.DESCENDING).limit(1)
             .get()//Recupera el último idPlato registrado en la BD
             .addOnSuccessListener { querySnapshot ->
-                var platos = firestoreService.getArrayListModel(querySnapshot, Plato::class.java)
+                var platos = firestoreService.getListModel(querySnapshot, Plato::class.java)
                 plato.idPlato = if (platos.size > 0) platos[0].idPlato + 1 else 1
 
                 val newPlatoRef = platoRef.document()

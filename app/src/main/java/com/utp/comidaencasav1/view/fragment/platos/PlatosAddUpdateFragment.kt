@@ -107,7 +107,7 @@ class PlatosAddUpdateFragment : Fragment(), PlatoView {
         return plato
     }
 
-    override fun showPlatos(platos: ArrayList<Plato>) {
+    override fun showPlatos(platos: List<Plato>) {
         TODO("Not yet implemented")
     }
 

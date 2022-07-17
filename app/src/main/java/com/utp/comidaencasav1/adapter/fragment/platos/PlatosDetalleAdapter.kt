@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.utp.comidaencasav1.R
 import com.utp.comidaencasav1.model.Plato
 
-class PlatosDetalleAdapter(var platos: ArrayList<Plato>?, var resource: Int) :
+class PlatosDetalleAdapter(var platos: List<Plato>, var resource: Int) :
     RecyclerView.Adapter<PlatosDetalleAdapter.CardPlatoHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): CardPlatoHolder {

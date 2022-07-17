@@ -15,10 +15,6 @@ class FirestoreService<T>() {
         return getInstance().collection(collectionName)
     }
 
-    fun getArrayListModel(querySnapshot: QuerySnapshot, clazz: Class<T>): ArrayList<T> {
-        return ArrayList(querySnapshot.toObjects(clazz))
-    }
-
     fun getListModel(querySnapshot: QuerySnapshot, clazz: Class<T>): List<T> {
         return querySnapshot.toObjects(clazz)
     }

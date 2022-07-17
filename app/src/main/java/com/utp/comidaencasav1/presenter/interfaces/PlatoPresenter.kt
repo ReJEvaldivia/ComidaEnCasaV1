@@ -4,7 +4,7 @@ import com.utp.comidaencasav1.model.Plato
 
 interface PlatoPresenter {
     //Visualización: Hace referencia al adapter
-    fun showPlatos(platos: ArrayList<Plato>)
+    fun showPlatos(platos: List<Plato>)
 
     //Navegación:
     fun navigatePlatosFragment()

@@ -40,7 +40,6 @@ class InsumosFragment : Fragment(), InsumoView {
     private var rvInsumos: RecyclerView? = null
     private var usuario: Usuario? = null
     private var btnNuevoInsumo: Button? = null
-    private var btnGuardarStock: Button? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -66,7 +65,7 @@ class InsumosFragment : Fragment(), InsumoView {
         _binding = null
     }
 
-    override fun showInsumos(insumos: ArrayList<Insumo>) {
+    override fun showInsumos(insumos: List<Insumo>) {
         try {
             rvInsumos!!.adapter = InsumosAdapter(
                 insumos,
@@ -90,14 +89,13 @@ class InsumosFragment : Fragment(), InsumoView {
         rvInsumos?.layoutManager = LinearLayoutManager(this.context)
 
         btnNuevoInsumo = binding.btnNuevoInsumo
-        btnGuardarStock = binding.btnGuardarInsumo
     }
 
     private fun navigateInsumosAddUpdateFragment() {
         binding.root.findNavController().navigate(R.id.nav_insumosAddUpdateFragment)
     }
 
-    override fun navigateInsumosFragment() {
+    override fun navigateInsumosFragmentOPlatosDetalleFragment() {
         TODO("Not yet implemented")
     }
 

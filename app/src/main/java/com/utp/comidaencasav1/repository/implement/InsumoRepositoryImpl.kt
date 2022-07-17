@@ -9,13 +9,14 @@ import com.utp.comidaencasav1.repository.network.FirestoreService
 
 class InsumoRepositoryImpl(var insumoPresenter: InsumoPresenter) : InsumoRepository {
     private val firestoreService = FirestoreService<Insumo>()
-    private val insumoRef = firestoreService.getCollectionRef(ConstanteHelper.COLLECTION_NAME_INSUMO)
+    private val insumoRef =
+        firestoreService.getCollectionRef(ConstanteHelper.COLLECTION_NAME_INSUMO)
 
     override fun getInsumosFirebase(idCuenta: Int) {
         insumoRef.whereEqualTo("idCuenta", idCuenta).orderBy("nombre")
             .get()
             .addOnSuccessListener { querySnapshot ->
-                var insumos = firestoreService.getArrayListModel(querySnapshot, Insumo::class.java)
+                var insumos = firestoreService.getListModel(querySnapshot, Insumo::class.java)
                 insumoPresenter.showInsumos(insumos)
             }
     }
@@ -24,7 +25,7 @@ class InsumoRepositoryImpl(var insumoPresenter: InsumoPresenter) : InsumoReposit
         insumoRef.orderBy("idInsumo", Query.Direction.DESCENDING).limit(1)
             .get()//Recupera el último idInsumo registrado en la BD
             .addOnSuccessListener { querySnapshot ->
-                var insumos = firestoreService.getArrayListModel(querySnapshot, Insumo::class.java)
+                var insumos = firestoreService.getListModel(querySnapshot, Insumo::class.java)
                 insumo.idInsumo = if (insumos.size > 0) insumos[0].idInsumo + 1 else 1
 
                 val newInsumoRef = insumoRef.document()
@@ -33,7 +34,7 @@ class InsumoRepositoryImpl(var insumoPresenter: InsumoPresenter) : InsumoReposit
                 //insumoRef.add(insumo)
                 newInsumoRef.set(insumo)
                     .addOnSuccessListener {
-                        insumoPresenter.navigateInsumosFragment()
+                        insumoPresenter.navigateInsumosFragmentOPlatosDetalleFragment()
                     }
                 //.addOnFailureListener { e -> Log.d("Firebase Message","Error writing document",e) }
             }
@@ -48,14 +49,14 @@ class InsumoRepositoryImpl(var insumoPresenter: InsumoPresenter) : InsumoReposit
                     "unidad" to insumo.unidad
                 )
             ).addOnSuccessListener {
-                insumoPresenter.navigateInsumosFragment()
+                insumoPresenter.navigateInsumosFragmentOPlatosDetalleFragment()
             }
     }
 
     override fun deleteInsumoFirebase(idDocumento: String) {
         insumoRef.document(idDocumento)
             .delete().addOnSuccessListener {
-                insumoPresenter.navigateInsumosFragment()
+                insumoPresenter.navigateInsumosFragmentOPlatosDetalleFragment()
             }
     }
 }

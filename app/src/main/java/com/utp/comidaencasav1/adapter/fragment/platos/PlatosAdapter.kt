@@ -13,7 +13,7 @@ import com.utp.comidaencasav1.databinding.CardPlatosBinding
 import com.utp.comidaencasav1.helper.ArgumentoHelper
 import com.utp.comidaencasav1.model.Plato
 
-class PlatosAdapter(var platos: ArrayList<Plato>, var resource: Int) :
+class PlatosAdapter(var platos: List<Plato>, var resource: Int) :
     RecyclerView.Adapter<PlatosAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

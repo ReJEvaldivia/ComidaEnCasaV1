@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.utp.comidaencasav1.R
 import com.utp.comidaencasav1.model.Plato
 
-class PlatoDiaAdapter(var platos: ArrayList<Plato>?, var resource: Int) :
+class PlatoDiaAdapter(var platos: List<Plato>, var resource: Int) :
     RecyclerView.Adapter<PlatoDiaAdapter.CardPlatoHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): CardPlatoHolder {

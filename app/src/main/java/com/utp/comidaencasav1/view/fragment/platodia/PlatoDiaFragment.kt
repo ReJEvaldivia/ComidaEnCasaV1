@@ -45,7 +45,7 @@ class PlatoDiaFragment: Fragment() , PlatoView {
 
         getPlatos(3)
         _binding!!.btnDetallePlatoDia.setOnClickListener {
-            root.findNavController().navigate(R.id.nav_insumosAddUpdateFragment)
+            root.findNavController().navigate(R.id.nav_platosDetalleFragment)
         }
 
         //val nav = Navigation.createNavigateOnClickListener(R.id.nav_platosAddUpdateFragment)
@@ -67,7 +67,7 @@ class PlatoDiaFragment: Fragment() , PlatoView {
     }
 
 
-    override fun showPlatos(platos: ArrayList<Plato>) {
+    override fun showPlatos(platos: List<Plato>) {
         try {
             rvIngredientes!!.adapter = PlatoDiaAdapter(
                 platos,

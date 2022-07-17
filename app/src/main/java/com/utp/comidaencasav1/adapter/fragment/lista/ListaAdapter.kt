@@ -10,7 +10,7 @@ import com.utp.comidaencasav1.R
 import com.utp.comidaencasav1.model.Plato
 
 
-class ListaAdapter(var platos: ArrayList<Plato>?, var resource: Int) :
+class ListaAdapter(var platos: List<Plato>, var resource: Int) :
     RecyclerView.Adapter<ListaAdapter.CardPlatoHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): CardPlatoHolder {

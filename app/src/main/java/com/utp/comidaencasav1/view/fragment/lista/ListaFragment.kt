@@ -56,7 +56,7 @@ class ListaFragment : Fragment(), PlatoView {
     }
 
 
-    override fun showPlatos(platos: ArrayList<Plato>) {
+    override fun showPlatos(platos: List<Plato>) {
         try {
             rvLista!!.adapter = ListaAdapter(
                 platos,

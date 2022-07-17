@@ -36,7 +36,7 @@ class CuentaRepositoryImpl(var cuentaPresenter: CuentaPresenter) : CuentaReposit
         cuentaRef.orderBy("idCuenta", Query.Direction.DESCENDING).limit(1)
             .get()//Recupera el último idCuenta registrado en la BD
             .addOnSuccessListener { querySnapshot ->
-                var cuentas = firestoreService.getArrayListModel(querySnapshot, Cuenta::class.java)
+                var cuentas = firestoreService.getListModel(querySnapshot, Cuenta::class.java)
                 cuenta.idCuenta = if (cuentas.size > 0) cuentas[0].idCuenta + 1 else 1
 
                 val newCuentaRef = cuentaRef.document()

@@ -4,10 +4,10 @@ import com.utp.comidaencasav1.model.Insumo
 
 interface InsumoPresenter{
     //Visualización: Hace referencia al adapter
-    fun showInsumos(insumos: ArrayList<Insumo>)
+    fun showInsumos(insumos: List<Insumo>)
 
     //Navegación:
-    fun navigateInsumosFragment()
+    fun navigateInsumosFragmentOPlatosDetalleFragment()
 
     //CRUD:
     fun getInsumos(idCuenta: Int)

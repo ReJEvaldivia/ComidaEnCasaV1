@@ -11,7 +11,7 @@ import com.utp.comidaencasav1.R
 import com.utp.comidaencasav1.model.Plato
 
 
-class VotacionPuntajeAdapter(var platos: ArrayList<Plato>?, var resource: Int) :
+class VotacionPuntajeAdapter(var platos: List<Plato>, var resource: Int) :
     RecyclerView.Adapter<VotacionPuntajeAdapter.CardPlatoHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): CardPlatoHolder {

@@ -65,7 +65,7 @@ class PlatosFragment : Fragment(), PlatoView, UsuarioView {
         _binding = null
     }
 
-    override fun showPlatos(platos: ArrayList<Plato>) {
+    override fun showPlatos(platos: List<Plato>) {
         try {
             rvPlatos!!.adapter = PlatosAdapter(
                 platos,

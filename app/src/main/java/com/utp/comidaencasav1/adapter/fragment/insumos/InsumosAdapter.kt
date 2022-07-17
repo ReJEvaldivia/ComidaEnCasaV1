@@ -15,7 +15,7 @@ import com.utp.comidaencasav1.databinding.CardInsumosBinding
 import com.utp.comidaencasav1.helper.ArgumentoHelper
 import com.utp.comidaencasav1.model.Insumo
 
-class InsumosAdapter(var insumos: ArrayList<Insumo>, var resource: Int) :
+class InsumosAdapter(var insumos: List<Insumo>, var resource: Int) :
     RecyclerView.Adapter<InsumosAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -37,7 +37,7 @@ class InsumosAdapter(var insumos: ArrayList<Insumo>, var resource: Int) :
         val root: View = binding.root
         var insumo: Insumo? = null
         var txtNombre: TextView = binding.txtNombreInsumo
-        var edtCantidad: EditText = binding.edtCantidadInsumo
+        var txtCantidad: TextView = binding.txtCantidadInsumo
         var txtUnidad: TextView = binding.txtUnidadInsumo
         var btnEditar: Button = binding.btnEditarInsumo
         var lay: LinearLayout = binding.layInsumos
@@ -48,7 +48,7 @@ class InsumosAdapter(var insumos: ArrayList<Insumo>, var resource: Int) :
             val bundle = ArgumentoHelper().setArgInsumo(insumo)
             this.insumo = insumo
             txtNombre.text = insumo?.idInsumo.toString() + " " + insumo?.nombre
-            edtCantidad.setText(""+insumo?.cantidad)
+            txtCantidad.text = ""+insumo?.cantidad
             txtUnidad.text = insumo?.unidad
 
             btnEditar.setOnClickListener(View.OnClickListener {

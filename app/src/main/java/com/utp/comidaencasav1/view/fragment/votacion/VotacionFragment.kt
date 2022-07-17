@@ -55,8 +55,7 @@ class VotacionFragment : Fragment(), PlatoView {
         _binding = null
     }
 
-
-    override fun showPlatos(platos: ArrayList<Plato>) {
+    override fun showPlatos(platos: List<Plato>) {
         try {
             rvPlatosVotacion!!.adapter = VotacionAdapter(
                 platos,

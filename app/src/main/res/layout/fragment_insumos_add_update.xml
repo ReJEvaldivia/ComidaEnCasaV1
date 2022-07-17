@@ -61,6 +61,57 @@
         app:layout_constraintStart_toStartOf="@+id/textView14"
         app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
+    <TextView
+        android:id="@+id/txtEtiquetaCantidad_InsumoAU"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:text="Cantidad"
+        android:textColor="@color/blue_3"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtUnidad_InsumoAU" />
+
+    <EditText
+        android:id="@+id/edtCantidad_InsumoAU"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:ems="10"
+        android:hint="Escriba la cantidad que dispone del insumo"
+        android:inputType="numberDecimal"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView14"
+        app:layout_constraintTop_toBottomOf="@+id/txtEtiquetaCantidad_InsumoAU" />
+
+    <Button
+        android:id="@+id/btnEliminar_InsumoAU"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginTop="36dp"
+        android:text="ELIMINAR NSUMO"
+        app:cornerRadius="15dp"
+        app:layout_constraintEnd_toEndOf="@+id/btnEditar_InsumoAU"
+        app:layout_constraintStart_toStartOf="@+id/btnEditar_InsumoAU"
+        app:layout_constraintTop_toBottomOf="@+id/btnEditar_InsumoAU" />
+
+    <Button
+        android:id="@+id/btnEditar_InsumoAU"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginTop="44dp"
+        android:text="EDITAR INSUMO"
+        app:cornerRadius="15dp"
+        app:layout_constraintEnd_toEndOf="@+id/btnRegistrar_InsumoAU"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toStartOf="@+id/btnRegistrar_InsumoAU"
+        app:layout_constraintTop_toBottomOf="@+id/btnRegistrar_InsumoAU" />
+
     <Button
         android:id="@+id/btnRegistrar_InsumoAU"
         android:layout_width="wrap_content"
@@ -69,29 +120,8 @@
         android:text="REGISTRAR INSUMO"
         app:cornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtUnidad_InsumoAU" />
-
-    <Button
-        android:id="@+id/btnEditar_InsumoAU"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_marginTop="40dp"
-        android:text="EDITAR INSUMO"
-        app:cornerRadius="15dp"
-        app:layout_constraintEnd_toEndOf="@+id/btnRegistrar_InsumoAU"
-        app:layout_constraintStart_toStartOf="@+id/btnRegistrar_InsumoAU"
-        app:layout_constraintTop_toBottomOf="@+id/btnRegistrar_InsumoAU" />
-
-    <Button
-        android:id="@+id/btnEliminar_InsumoAU"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_marginTop="40dp"
-        android:text="ELIMINAR NSUMO"
-        app:cornerRadius="15dp"
-        app:layout_constraintEnd_toEndOf="@+id/btnEditar_InsumoAU"
-        app:layout_constraintStart_toStartOf="@+id/btnEditar_InsumoAU"
-        app:layout_constraintTop_toBottomOf="@+id/btnEditar_InsumoAU" />
+        app:layout_constraintTop_toBottomOf="@+id/edtCantidad_InsumoAU" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
