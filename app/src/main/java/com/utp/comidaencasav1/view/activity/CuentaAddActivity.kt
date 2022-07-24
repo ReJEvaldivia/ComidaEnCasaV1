@@ -9,6 +9,7 @@ import android.widget.EditText
 import com.utp.comidaencasav1.R
 import com.utp.comidaencasav1.databinding.ActivityCuentaAddBinding
 import com.utp.comidaencasav1.helper.ExtraHelper
+import com.utp.comidaencasav1.helper.OperacionHelper
 import com.utp.comidaencasav1.model.Cuenta
 import com.utp.comidaencasav1.presenter.implement.CuentaPresenterImpl
 import com.utp.comidaencasav1.presenter.interfaces.CuentaPresenter
@@ -53,7 +54,7 @@ class CuentaAddActivity : AppCompatActivity(), CuentaView {
         var cuenta: Cuenta = Cuenta()
         cuenta.familiaNombre = edtFamilia!!.text.toString()
         cuenta.correo = edtCorreo!!.text.toString()
-        cuenta.contrasena = edtConstrasena!!.text.toString()
+        cuenta.contrasena = OperacionHelper().encryptSHA1(edtConstrasena!!.text.toString())
         return cuenta
     }
 

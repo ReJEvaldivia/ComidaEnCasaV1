@@ -80,5 +80,10 @@
         android:name="com.utp.comidaencasav1.view.fragment.calendario.CalendarioFragment"
         android:label="@string/menu_calendario"
         tools:layout="@layout/fragment_calendario" />
+    <fragment
+        android:id="@+id/nav_cerrarSesion"
+        android:name="com.utp.comidaencasav1.view.fragment.cerrarsesion.CerrarSesionFragment"
+        android:label="@string/menu_cerrar_sesion"
+        tools:layout="@layout/fragment_cerrar_sesion" />
 
 </navigation>

@@ -7,4 +7,5 @@ interface PlatoInteractor {
     fun setPlatoFirebase(plato: Plato)
     fun updatePlatoFirebase(plato: Plato)
     fun deletePlatoFirebase(idDocumento: String)
+    fun getListaFirebase(idCuenta: Int)
 }

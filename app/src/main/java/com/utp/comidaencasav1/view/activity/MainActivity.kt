@@ -57,7 +57,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_calendario,
                 R.id.nav_reporte,
                 R.id.nav_perfilAddUpdate,
-                R.id.nav_cuentaAddUpdate
+                R.id.nav_cuentaAddUpdate,
+                R.id.nav_cerrarSesion
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

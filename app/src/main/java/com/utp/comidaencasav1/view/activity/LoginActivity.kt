@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.utp.comidaencasav1.databinding.ActivityLoginBinding
 import com.utp.comidaencasav1.helper.ExtraHelper
+import com.utp.comidaencasav1.helper.OperacionHelper
 import com.utp.comidaencasav1.model.Cuenta
 import com.utp.comidaencasav1.presenter.implement.CuentaPresenterImpl
 import com.utp.comidaencasav1.presenter.interfaces.CuentaPresenter
@@ -55,7 +56,7 @@ class LoginActivity : AppCompatActivity(), CuentaView {
     private fun getComponents(): Cuenta {
         var cuenta: Cuenta = Cuenta()
         cuenta.correo = edtCorreo!!.text.toString()
-        cuenta.contrasena = edtConstrasena!!.text.toString()
+        cuenta.contrasena = OperacionHelper().encryptSHA1(edtConstrasena!!.text.toString())
         return cuenta
     }
 

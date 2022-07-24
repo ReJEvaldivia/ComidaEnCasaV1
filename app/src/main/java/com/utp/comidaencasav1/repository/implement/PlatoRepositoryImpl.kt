@@ -57,4 +57,13 @@ class PlatoRepositoryImpl(var platoPresenter: PlatoPresenter) : PlatoRepository 
                 platoPresenter.navigatePlatosFragment()
             }
     }
+
+    override fun getListaFirebase(idCuenta: Int) {
+        platoRef.whereEqualTo("idCuenta", idCuenta).orderBy("nombre")
+            .get()
+            .addOnSuccessListener { querySnapshot ->
+                var platos = firestoreService.getListModel(querySnapshot, Plato::class.java)
+                platoPresenter.showPlatos(platos)
+            }
+    }
 }

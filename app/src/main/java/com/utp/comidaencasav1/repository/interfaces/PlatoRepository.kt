@@ -19,4 +19,9 @@ interface PlatoRepository {
      * DELETE
      */
     fun deletePlatoFirebase(idDocumento: String)
+    /**
+     * GET: Recupera la lista de platos de la cuenta
+     * */
+    fun getListaFirebase(idCuenta: Int)
+
 }

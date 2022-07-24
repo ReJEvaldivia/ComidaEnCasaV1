@@ -24,4 +24,8 @@ class PlatoInteractorImpl(var platoPresenter: PlatoPresenter) : PlatoInteractor 
     override fun deletePlatoFirebase(idDocumento: String) {
         platoRepository.deletePlatoFirebase(idDocumento)
     }
+
+    override fun getListaFirebase(idCuenta: Int) {
+        platoRepository.getListaFirebase(idCuenta)
+    }
 }

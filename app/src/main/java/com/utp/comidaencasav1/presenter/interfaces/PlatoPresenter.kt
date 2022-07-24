@@ -14,4 +14,7 @@ interface PlatoPresenter {
     fun setPlato(plato: Plato)
     fun updatePlato(plato: Plato)
     fun deletePlato(idDocumento: String)
+
+    //Lista
+    fun getLista(idCuenta: Int)
 }

@@ -17,7 +17,7 @@
     <string name="menu_reporte">Reporte</string>
     <string name="menu_perfil">Administrar Perfil</string>
     <string name="menu_cuenta">Administrar Cuenta</string>
-    <string name="menu_cerrar">Cerrar Sesión</string>
+    <string name="menu_cerrar_sesion">Cerrar Sesión</string>
 
 
 </resources>
